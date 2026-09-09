@@ -1,0 +1,1 @@
+# Yoshio342766.github.io
