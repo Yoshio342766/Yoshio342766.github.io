@@ -8,3 +8,5 @@ Thumbs.db
 *.rar
 *.7z
 
+# Gitの安全なコミット用スクリプトを除外
+git_safe_commit.ps1
