@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+<style>
+    .leaflet-control-layers,
+    .leaflet-control-layers-expanded {
+        font-size: 11px;
+        padding: 10px 14px;
+        line-height: 1.9;
+        border-radius: 6px;
+        background-color: rgba(218, 226, 216, 0.7) !important;
+    }
+    .leaflet-control-layers-overlays label {
+        display: flex;
+        align-items: center;
+        margin: 4px 0;
+    }
+    .leaflet-control-layers input[type="checkbox"],
+    .leaflet-control-layers input[type="radio"] {
+        transform: scale(1.0);
+        margin-right: 8px;
+    }
+</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_2fa1b0d7cb086ce36dcb85a7507692b2 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_2fa1b0d7cb086ce36dcb85a7507692b2" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_2fa1b0d7cb086ce36dcb85a7507692b2 = L.map(
+                "map_2fa1b0d7cb086ce36dcb85a7507692b2",
+                {
+                    center: [36.5, 138.0],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+  "control": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_da96eb3839e593fbfd5922cf79fe4a5c = L.tileLayer(
+                "https://tile.openstreetmap.jp/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\u0027https://openstreetmap.jp\u0027\u003eOpenStreetMap Japan\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_da96eb3839e593fbfd5922cf79fe4a5c.addTo(map_2fa1b0d7cb086ce36dcb85a7507692b2);
+        
+    
+            map_2fa1b0d7cb086ce36dcb85a7507692b2.fitBounds(
+                [[38.06216260190219, 140.78834416252406], [38.03776651756334, 140.63693037498842], [37.73755206179236, 139.31424760842924], [37.39301936286963, 138.79356451477958], [37.3944586, 138.7871228], [37.38492289585235, 138.7592736562695], [37.4373129, 138.7361944], [37.35813684535238, 138.5697619393251], [37.361545570861345, 138.59059915126312], [37.52974694982851, 138.8733182569313], [37.5237139, 138.8769479], [37.545851, 138.8839165], [37.529636344079535, 138.87344602280635], [37.90934440482002, 139.1351483215363], [37.929285051189964, 139.16377780562547], [37.774325348523625, 139.00768498123378], [37.758380717678776, 139.02157262090864], [37.7755606476168, 139.01833197755832], [37.7069097, 138.8262161], [37.726803, 138.8140128], [37.6634747, 138.8243647], [37.697074602047024, 138.87663123068197], [37.74681091368141, 138.9375298507688], [37.873903066947676, 139.0389190207319], [37.883862878159455, 139.0367347868897], [37.91549528992876, 139.0540399877252], [37.91617211230303, 139.05519330001684], [37.9119681, 139.0614003], [37.962522677872364, 139.2868222625055], [38.042008922548845, 139.3632519560793], [38.0723006, 139.7310442], [38.0260251, 139.9937836], [38.03827737183504, 140.64416010789665], [38.049364, 140.7280658]],
+                {}
+            );
+        
+    
+            var feature_group_311e13f670cac73e8f3665e135fa7e44 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_89113a8fb65393cf96a4ce002ed62d45 = L.marker(
+                [38.06216260190219, 140.78834416252406],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_fe4e2d13207c5a4c370c09e100625ec6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_42375ecc98965bbcfc7a3b7b864e8cae = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_d5bda863202d671792ce4d86ddc70a9f = $(`<div id="html_d5bda863202d671792ce4d86ddc70a9f" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>セブンイレブン 柴田船岡上大原店</div><a href="https://www.google.com/maps/search/?api=1&query=38.06216260190219,140.78834416252406" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_42375ecc98965bbcfc7a3b7b864e8cae.setContent(html_d5bda863202d671792ce4d86ddc70a9f);
+            
+        
+
+        marker_89113a8fb65393cf96a4ce002ed62d45.bindPopup(popup_42375ecc98965bbcfc7a3b7b864e8cae)
+        ;
+
+        
+    
+    
+            marker_89113a8fb65393cf96a4ce002ed62d45.bindTooltip(
+                `<div>
+                     2025-04-24_セブンイレブン 柴田船岡上大原店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_89113a8fb65393cf96a4ce002ed62d45.setIcon(icon_fe4e2d13207c5a4c370c09e100625ec6);
+            
+    
+            var marker_12d663e6d259e221e7c4d30b0dfafb6e = L.marker(
+                [38.03776651756334, 140.63693037498842],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_a2bdb5e1d011dbf66e817f909cc22be3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f04437bf686a9efbbb36276eca65ec1 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bc405a47f787ecfec2e27247737335b0 = $(`<div id="html_bc405a47f787ecfec2e27247737335b0" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>白石IC // 自：05:43</div><a href="https://www.google.com/maps/search/?api=1&query=38.03776651756334,140.63693037498842" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_2f04437bf686a9efbbb36276eca65ec1.setContent(html_bc405a47f787ecfec2e27247737335b0);
+            
+        
+
+        marker_12d663e6d259e221e7c4d30b0dfafb6e.bindPopup(popup_2f04437bf686a9efbbb36276eca65ec1)
+        ;
+
+        
+    
+    
+            marker_12d663e6d259e221e7c4d30b0dfafb6e.bindTooltip(
+                `<div>
+                     2025-04-24_白石IC // 自：05:43
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_12d663e6d259e221e7c4d30b0dfafb6e.setIcon(icon_a2bdb5e1d011dbf66e817f909cc22be3);
+            
+    
+            var marker_3f1aa507bfbb3b3844092a70e0d6d293 = L.marker(
+                [37.73755206179236, 139.31424760842924],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_0af7ea9810f826ee8e1c724be7e0a36a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_35b3292409a401caa73c766e1a666c0a = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0d94c1e1d291cc80dd5a7c332ca2bdf8 = $(`<div id="html_0d94c1e1d291cc80dd5a7c332ca2bdf8" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>阿賀野川SA（下り）</div><a href="https://www.google.com/maps/search/?api=1&query=37.73755206179236,139.31424760842924" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_35b3292409a401caa73c766e1a666c0a.setContent(html_0d94c1e1d291cc80dd5a7c332ca2bdf8);
+            
+        
+
+        marker_3f1aa507bfbb3b3844092a70e0d6d293.bindPopup(popup_35b3292409a401caa73c766e1a666c0a)
+        ;
+
+        
+    
+    
+            marker_3f1aa507bfbb3b3844092a70e0d6d293.bindTooltip(
+                `<div>
+                     2025-04-24_阿賀野川SA（下り）
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f1aa507bfbb3b3844092a70e0d6d293.setIcon(icon_0af7ea9810f826ee8e1c724be7e0a36a);
+            
+    
+            var marker_a9d6cda126876255dfce02c2e1ec370e = L.marker(
+                [37.39301936286963, 138.79356451477958],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_22d9c7c1a77b204d8fa80a65740cb41b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b2532c266461e6275b40280c4712686b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8b533fb73321664e2a14232a0213e3ad = $(`<div id="html_8b533fb73321664e2a14232a0213e3ad" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>長岡南越路SIC // 至：09:12</div><a href="https://www.google.com/maps/search/?api=1&query=37.39301936286963,138.79356451477958" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_b2532c266461e6275b40280c4712686b.setContent(html_8b533fb73321664e2a14232a0213e3ad);
+            
+        
+
+        marker_a9d6cda126876255dfce02c2e1ec370e.bindPopup(popup_b2532c266461e6275b40280c4712686b)
+        ;
+
+        
+    
+    
+            marker_a9d6cda126876255dfce02c2e1ec370e.bindTooltip(
+                `<div>
+                     2025-04-24_長岡南越路SIC // 至：09:12
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a9d6cda126876255dfce02c2e1ec370e.setIcon(icon_22d9c7c1a77b204d8fa80a65740cb41b);
+            
+    
+            var marker_a7d28953109e028db3cd66339263719c = L.marker(
+                [37.3944586, 138.7871228],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_7cf29d0bc591f225207173c9b7393a17 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_521e91cb35032222de777fa984df372f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dfe8548b84bbb0dc813ad7cf23d5ede6 = $(`<div id="html_dfe8548b84bbb0dc813ad7cf23d5ede6" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>セブンイレブン 中越来迎寺店</div><a href="https://www.google.com/maps/search/?api=1&query=37.3944586,138.7871228" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_521e91cb35032222de777fa984df372f.setContent(html_dfe8548b84bbb0dc813ad7cf23d5ede6);
+            
+        
+
+        marker_a7d28953109e028db3cd66339263719c.bindPopup(popup_521e91cb35032222de777fa984df372f)
+        ;
+
+        
+    
+    
+            marker_a7d28953109e028db3cd66339263719c.bindTooltip(
+                `<div>
+                     2025-04-24_セブンイレブン 中越来迎寺店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7d28953109e028db3cd66339263719c.setIcon(icon_7cf29d0bc591f225207173c9b7393a17);
+            
+    
+            var marker_aacbead525c941422eba2588addf6e5b = L.marker(
+                [37.38492289585235, 138.7592736562695],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_0712e88909db8293bd0ffeb5a0011120 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2b9d9f3da6b2077454bb1e883b3b67e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_7f62ff198b452820ca557509a8031f55 = $(`<div id="html_7f62ff198b452820ca557509a8031f55" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>寳德山稲荷大社</div><a href="https://www.google.com/maps/search/?api=1&query=37.38492289585235,138.7592736562695" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_c2b9d9f3da6b2077454bb1e883b3b67e.setContent(html_7f62ff198b452820ca557509a8031f55);
+            
+        
+
+        marker_aacbead525c941422eba2588addf6e5b.bindPopup(popup_c2b9d9f3da6b2077454bb1e883b3b67e)
+        ;
+
+        
+    
+    
+            marker_aacbead525c941422eba2588addf6e5b.bindTooltip(
+                `<div>
+                     2025-04-24_寳德山稲荷大社
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_aacbead525c941422eba2588addf6e5b.setIcon(icon_0712e88909db8293bd0ffeb5a0011120);
+            
+    
+            var marker_6e78222b6e6f6ba1da36071e57685452 = L.marker(
+                [37.4373129, 138.7361944],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_ef1b43806e76e8ef9a10e53a9125867b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8cfb93f5297fcf147f6e207d00656c50 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ca26aaf39984d89f11a502ae2120aa2f = $(`<div id="html_ca26aaf39984d89f11a502ae2120aa2f" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>江口だんご 本店</div><a href="https://www.google.com/maps/search/?api=1&query=37.4373129,138.7361944" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_8cfb93f5297fcf147f6e207d00656c50.setContent(html_ca26aaf39984d89f11a502ae2120aa2f);
+            
+        
+
+        marker_6e78222b6e6f6ba1da36071e57685452.bindPopup(popup_8cfb93f5297fcf147f6e207d00656c50)
+        ;
+
+        
+    
+    
+            marker_6e78222b6e6f6ba1da36071e57685452.bindTooltip(
+                `<div>
+                     2025-04-24_江口だんご 本店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6e78222b6e6f6ba1da36071e57685452.setIcon(icon_ef1b43806e76e8ef9a10e53a9125867b);
+            
+    
+            var marker_eaa63b9ba3fea744accda9a91693cb17 = L.marker(
+                [37.35813684535238, 138.5697619393251],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_4402afb8793770969b2b192a3e3904d9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d83cea821bff4830dd0d9d2c2e3835b2 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_8479367f8dc71bf1546bf98651c0161c = $(`<div id="html_8479367f8dc71bf1546bf98651c0161c" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>柏崎市場食堂 鯛乃や</div><a href="https://www.google.com/maps/search/?api=1&query=37.35813684535238,138.5697619393251" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_d83cea821bff4830dd0d9d2c2e3835b2.setContent(html_8479367f8dc71bf1546bf98651c0161c);
+            
+        
+
+        marker_eaa63b9ba3fea744accda9a91693cb17.bindPopup(popup_d83cea821bff4830dd0d9d2c2e3835b2)
+        ;
+
+        
+    
+    
+            marker_eaa63b9ba3fea744accda9a91693cb17.bindTooltip(
+                `<div>
+                     2025-04-24_柏崎市場食堂 鯛乃や
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eaa63b9ba3fea744accda9a91693cb17.setIcon(icon_4402afb8793770969b2b192a3e3904d9);
+            
+    
+            var marker_ca7023fc9fb5a8128c35673e77946e47 = L.marker(
+                [37.361545570861345, 138.59059915126312],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_9a571319ce5df1fa52bac3a5b4368452 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7af2b619264bf35a5adecaf361c53075 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_abab37797bff9da3402f91839f7babf3 = $(`<div id="html_abab37797bff9da3402f91839f7babf3" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>柏崎IC // 自：12:35</div><a href="https://www.google.com/maps/search/?api=1&query=37.361545570861345,138.59059915126312" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_7af2b619264bf35a5adecaf361c53075.setContent(html_abab37797bff9da3402f91839f7babf3);
+            
+        
+
+        marker_ca7023fc9fb5a8128c35673e77946e47.bindPopup(popup_7af2b619264bf35a5adecaf361c53075)
+        ;
+
+        
+    
+    
+            marker_ca7023fc9fb5a8128c35673e77946e47.bindTooltip(
+                `<div>
+                     2025-04-24_柏崎IC // 自：12:35
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ca7023fc9fb5a8128c35673e77946e47.setIcon(icon_9a571319ce5df1fa52bac3a5b4368452);
+            
+    
+            var marker_7b84ebe92f74ce452ce4f984228d0805 = L.marker(
+                [37.52974694982851, 138.8733182569313],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_a2f4bd89c440e36d5829723ed561fcc2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ced7ccc57db473fcbdc969ce0c2e4b4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_26176b2a6f3fcce473c776e4faaee4d5 = $(`<div id="html_26176b2a6f3fcce473c776e4faaee4d5" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>中之島見付IC // 至：12:59</div><a href="https://www.google.com/maps/search/?api=1&query=37.52974694982851,138.8733182569313" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_9ced7ccc57db473fcbdc969ce0c2e4b4.setContent(html_26176b2a6f3fcce473c776e4faaee4d5);
+            
+        
+
+        marker_7b84ebe92f74ce452ce4f984228d0805.bindPopup(popup_9ced7ccc57db473fcbdc969ce0c2e4b4)
+        ;
+
+        
+    
+    
+            marker_7b84ebe92f74ce452ce4f984228d0805.bindTooltip(
+                `<div>
+                     2025-04-24_中之島見付IC // 至：12:59
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7b84ebe92f74ce452ce4f984228d0805.setIcon(icon_a2f4bd89c440e36d5829723ed561fcc2);
+            
+    
+            var marker_bdf736aa0c898f8ac63015f890b5884d = L.marker(
+                [37.5237139, 138.8769479],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_3e7e11ee88afae431b5d2e5ba5330a4e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_57288012e8f34929bd105d25e07e6d1b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_677d37153f4ba73efadd869b8cfe2815 = $(`<div id="html_677d37153f4ba73efadd869b8cfe2815" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>デイリーヤマザキ 中之島店</div><a href="https://www.google.com/maps/search/?api=1&query=37.5237139,138.8769479" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_57288012e8f34929bd105d25e07e6d1b.setContent(html_677d37153f4ba73efadd869b8cfe2815);
+            
+        
+
+        marker_bdf736aa0c898f8ac63015f890b5884d.bindPopup(popup_57288012e8f34929bd105d25e07e6d1b)
+        ;
+
+        
+    
+    
+            marker_bdf736aa0c898f8ac63015f890b5884d.bindTooltip(
+                `<div>
+                     2025-04-24_デイリーヤマザキ 中之島店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bdf736aa0c898f8ac63015f890b5884d.setIcon(icon_3e7e11ee88afae431b5d2e5ba5330a4e);
+            
+    
+            var marker_b18db8eab6b30a7bc8cc41dac5eccb7b = L.marker(
+                [37.545851, 138.8839165],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_162c333c826747795f40956107549a8d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2bc1f72fe5cb70beef5a5b6d3dca0eff = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3c88295e30ae929de37d15ce7828f99e = $(`<div id="html_3c88295e30ae929de37d15ce7828f99e" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>道の駅 パティオにいがた</div><a href="https://www.google.com/maps/search/?api=1&query=37.545851,138.8839165" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_2bc1f72fe5cb70beef5a5b6d3dca0eff.setContent(html_3c88295e30ae929de37d15ce7828f99e);
+            
+        
+
+        marker_b18db8eab6b30a7bc8cc41dac5eccb7b.bindPopup(popup_2bc1f72fe5cb70beef5a5b6d3dca0eff)
+        ;
+
+        
+    
+    
+            marker_b18db8eab6b30a7bc8cc41dac5eccb7b.bindTooltip(
+                `<div>
+                     2025-04-24_道の駅 パティオにいがた
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b18db8eab6b30a7bc8cc41dac5eccb7b.setIcon(icon_162c333c826747795f40956107549a8d);
+            
+    
+            var marker_98661e00ea89a9e7da09172ffe297c55 = L.marker(
+                [37.529636344079535, 138.87344602280635],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_b496ade86c2e737380b0070ca158a72b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2233c24118e3ea918dc9800f3327312b = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5cb8a0d37371c016b121ed07454690a4 = $(`<div id="html_5cb8a0d37371c016b121ed07454690a4" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>中之島見付IC // 自：13:47</div><a href="https://www.google.com/maps/search/?api=1&query=37.52974694982851,138.8733182569313" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_2233c24118e3ea918dc9800f3327312b.setContent(html_5cb8a0d37371c016b121ed07454690a4);
+            
+        
+
+        marker_98661e00ea89a9e7da09172ffe297c55.bindPopup(popup_2233c24118e3ea918dc9800f3327312b)
+        ;
+
+        
+    
+    
+            marker_98661e00ea89a9e7da09172ffe297c55.bindTooltip(
+                `<div>
+                     2025-04-24_中之島見付IC // 自：13:47
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98661e00ea89a9e7da09172ffe297c55.setIcon(icon_b496ade86c2e737380b0070ca158a72b);
+            
+    
+            var marker_47956cec171f892e6cd4868902c3370f = L.marker(
+                [37.90934440482002, 139.1351483215363],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_33b3f0e2df35f7c5a787597a065dc688 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fdcd7fef400ea6352500216a1a03dea3 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3aafe4a03a677bcdd07fe193bbce2014 = $(`<div id="html_3aafe4a03a677bcdd07fe193bbce2014" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>新潟空港IC // 至：14:23</div><a href="https://www.google.com/maps/search/?api=1&query=37.90934440482002,139.1351483215363" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_fdcd7fef400ea6352500216a1a03dea3.setContent(html_3aafe4a03a677bcdd07fe193bbce2014);
+            
+        
+
+        marker_47956cec171f892e6cd4868902c3370f.bindPopup(popup_fdcd7fef400ea6352500216a1a03dea3)
+        ;
+
+        
+    
+    
+            marker_47956cec171f892e6cd4868902c3370f.bindTooltip(
+                `<div>
+                     2025-04-24_新潟空港IC // 至：14:23
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_47956cec171f892e6cd4868902c3370f.setIcon(icon_33b3f0e2df35f7c5a787597a065dc688);
+            
+    
+            var marker_8cd447b70e59a5f28b0a204296f27ecb = L.marker(
+                [37.929285051189964, 139.16377780562547],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_bbf6c15362ed56220c013acf24e305ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9139945c23245bd5a1913a1340c0ce72 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_b2958b66b2e8c96cca0fcc9594b63d6c = $(`<div id="html_b2958b66b2e8c96cca0fcc9594b63d6c" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>新潟 せんべい王国</div><a href="https://www.google.com/maps/search/?api=1&query=37.929285051189964,139.16377780562547" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_9139945c23245bd5a1913a1340c0ce72.setContent(html_b2958b66b2e8c96cca0fcc9594b63d6c);
+            
+        
+
+        marker_8cd447b70e59a5f28b0a204296f27ecb.bindPopup(popup_9139945c23245bd5a1913a1340c0ce72)
+        ;
+
+        
+    
+    
+            marker_8cd447b70e59a5f28b0a204296f27ecb.bindTooltip(
+                `<div>
+                     2025-04-24_新潟 せんべい王国
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8cd447b70e59a5f28b0a204296f27ecb.setIcon(icon_bbf6c15362ed56220c013acf24e305ba);
+            
+    
+            var marker_3a21fd9017c6d206cc8744b88fca24e9 = L.marker(
+                [37.774325348523625, 139.00768498123378],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_dd3d97104c546eb6ebec2fdd58158668 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bfee1839da0e3389e7ecf73ffc84aa24 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_5b1754d7fb30f1c2add6237ff1aab62d = $(`<div id="html_5b1754d7fb30f1c2add6237ff1aab62d" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>マスヤ 味方店</div><a href="https://www.google.com/maps/search/?api=1&query=37.774325348523625,139.00768498123378" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_bfee1839da0e3389e7ecf73ffc84aa24.setContent(html_5b1754d7fb30f1c2add6237ff1aab62d);
+            
+        
+
+        marker_3a21fd9017c6d206cc8744b88fca24e9.bindPopup(popup_bfee1839da0e3389e7ecf73ffc84aa24)
+        ;
+
+        
+    
+    
+            marker_3a21fd9017c6d206cc8744b88fca24e9.bindTooltip(
+                `<div>
+                     2025-04-24_マスヤ 味方店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a21fd9017c6d206cc8744b88fca24e9.setIcon(icon_dd3d97104c546eb6ebec2fdd58158668);
+            
+    
+            var marker_9bd3b76f2996696cec125857a5d9aa57 = L.marker(
+                [37.758380717678776, 139.02157262090864],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_d9324cecb5e33ec7067ff2ffcb29ed8b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6b4ce3cf10c1c6dcc544a2c83f4fe010 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_9e63d9d804008a11dcffbd1a645018c2 = $(`<div id="html_9e63d9d804008a11dcffbd1a645018c2" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>ゼネラルオート 白根SS</div><a href="https://www.google.com/maps/search/?api=1&query=37.758380717678776,139.02157262090864" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_6b4ce3cf10c1c6dcc544a2c83f4fe010.setContent(html_9e63d9d804008a11dcffbd1a645018c2);
+            
+        
+
+        marker_9bd3b76f2996696cec125857a5d9aa57.bindPopup(popup_6b4ce3cf10c1c6dcc544a2c83f4fe010)
+        ;
+
+        
+    
+    
+            marker_9bd3b76f2996696cec125857a5d9aa57.bindTooltip(
+                `<div>
+                     2025-04-24_ゼネラルオート 白根SS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9bd3b76f2996696cec125857a5d9aa57.setIcon(icon_d9324cecb5e33ec7067ff2ffcb29ed8b);
+            
+    
+            var marker_5b73da173710de06a02b7fa03c12ad79 = L.marker(
+                [37.7755606476168, 139.01833197755832],
+                {
+}
+            ).addTo(feature_group_311e13f670cac73e8f3665e135fa7e44);
+        
+    
+            var icon_6f67ce2ed4c82a05c9145e9d463f1ab7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f7e2cbeb6e311bd9be4ed95614dc2444 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_0b8840742f72aaf073c4a5cc99c37d03 = $(`<div id="html_0b8840742f72aaf073c4a5cc99c37d03" style="width: 100.0%; height: 100.0%;"><div>2025-04-24</div><div>ファミリーロッジ旅籠屋・新潟南店 // 27号室</div><a href="https://www.google.com/maps/search/?api=1&query=37.7755606476168,139.01833197755832" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_f7e2cbeb6e311bd9be4ed95614dc2444.setContent(html_0b8840742f72aaf073c4a5cc99c37d03);
+            
+        
+
+        marker_5b73da173710de06a02b7fa03c12ad79.bindPopup(popup_f7e2cbeb6e311bd9be4ed95614dc2444)
+        ;
+
+        
+    
+    
+            marker_5b73da173710de06a02b7fa03c12ad79.bindTooltip(
+                `<div>
+                     2025-04-24_ファミリーロッジ旅籠屋・新潟南店 // 27号室
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5b73da173710de06a02b7fa03c12ad79.setIcon(icon_6f67ce2ed4c82a05c9145e9d463f1ab7);
+            
+    
+            feature_group_311e13f670cac73e8f3665e135fa7e44.addTo(map_2fa1b0d7cb086ce36dcb85a7507692b2);
+        
+    
+            var feature_group_4c287cd827c87f36749adb6ce27f9357 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_f19b3263fd74ba96b8b437f8e86a312e = L.marker(
+                [37.7069097, 138.8262161],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_82c47785de529eb34669ace1a1e7316d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_78ef0c15d545a34a46c1262603aa42fa = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_2064b03466bc3861b5f1018f9054482d = $(`<div id="html_2064b03466bc3861b5f1018f9054482d" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>弥彦神社</div><a href="https://www.google.com/maps/search/?api=1&query=37.7069097,138.8262161" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_78ef0c15d545a34a46c1262603aa42fa.setContent(html_2064b03466bc3861b5f1018f9054482d);
+            
+        
+
+        marker_f19b3263fd74ba96b8b437f8e86a312e.bindPopup(popup_78ef0c15d545a34a46c1262603aa42fa)
+        ;
+
+        
+    
+    
+            marker_f19b3263fd74ba96b8b437f8e86a312e.bindTooltip(
+                `<div>
+                     2025-04-25_弥彦神社
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f19b3263fd74ba96b8b437f8e86a312e.setIcon(icon_82c47785de529eb34669ace1a1e7316d);
+            
+    
+            var marker_2058cfa3dc197f2b53b7dc1b8e3d123b = L.marker(
+                [37.726803, 138.8140128],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_26d3c1fe80f81c96c49542193c1613d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c9192ca5d7c3cdf175652141ff5b7cc4 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_48e64d0772f787eec12add082cf2a935 = $(`<div id="html_48e64d0772f787eec12add082cf2a935" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>弥彦山スカイライン</div><a href="https://www.google.com/maps/search/?api=1&query=37.726803,138.8140128" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_c9192ca5d7c3cdf175652141ff5b7cc4.setContent(html_48e64d0772f787eec12add082cf2a935);
+            
+        
+
+        marker_2058cfa3dc197f2b53b7dc1b8e3d123b.bindPopup(popup_c9192ca5d7c3cdf175652141ff5b7cc4)
+        ;
+
+        
+    
+    
+            marker_2058cfa3dc197f2b53b7dc1b8e3d123b.bindTooltip(
+                `<div>
+                     2025-04-25_弥彦山スカイライン
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2058cfa3dc197f2b53b7dc1b8e3d123b.setIcon(icon_26d3c1fe80f81c96c49542193c1613d6);
+            
+    
+            var marker_cdd6eaf4712328c747b152bfa5ccb28c = L.marker(
+                [37.6634747, 138.8243647],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_4774467ab4ca1a5a63bb72d65612dd3e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ffd83e86169376bd28d30eb64fadc123 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_1ab8385d29f3045da02945888b179552 = $(`<div id="html_1ab8385d29f3045da02945888b179552" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>道の駅 国上</div><a href="https://www.google.com/maps/search/?api=1&query=37.6634747,138.8243647" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_ffd83e86169376bd28d30eb64fadc123.setContent(html_1ab8385d29f3045da02945888b179552);
+            
+        
+
+        marker_cdd6eaf4712328c747b152bfa5ccb28c.bindPopup(popup_ffd83e86169376bd28d30eb64fadc123)
+        ;
+
+        
+    
+    
+            marker_cdd6eaf4712328c747b152bfa5ccb28c.bindTooltip(
+                `<div>
+                     2025-04-25_道の駅 国上
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cdd6eaf4712328c747b152bfa5ccb28c.setIcon(icon_4774467ab4ca1a5a63bb72d65612dd3e);
+            
+    
+            var marker_e2f3ee71932fbe791fa1777b1f271d75 = L.marker(
+                [37.697074602047024, 138.87663123068197],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_a740a600f6b454d556414f27499f9352 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f9427d11612b2215eac7179f4d50f920 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_671ea67f782144417e3541316cccf26e = $(`<div id="html_671ea67f782144417e3541316cccf26e" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>ファミリーマート 燕吉田本所店</div><a href="https://www.google.com/maps/search/?api=1&query=37.697074602047024,138.87663123068197" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_f9427d11612b2215eac7179f4d50f920.setContent(html_671ea67f782144417e3541316cccf26e);
+            
+        
+
+        marker_e2f3ee71932fbe791fa1777b1f271d75.bindPopup(popup_f9427d11612b2215eac7179f4d50f920)
+        ;
+
+        
+    
+    
+            marker_e2f3ee71932fbe791fa1777b1f271d75.bindTooltip(
+                `<div>
+                     2025-04-25_ファミリーマート 燕吉田本所店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e2f3ee71932fbe791fa1777b1f271d75.setIcon(icon_a740a600f6b454d556414f27499f9352);
+            
+    
+            var marker_d75b39efd3262a81436b9afec2ad2f00 = L.marker(
+                [37.74681091368141, 138.9375298507688],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_7f00515f7030a3da16ef416d68d57cc1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4453d9f6238b009c00b0f1861fb7f07e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_355c3ee311fccb308408d0bf11caa890 = $(`<div id="html_355c3ee311fccb308408d0bf11caa890" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>巻潟東IC // 自：10:46</div><a href="https://www.google.com/maps/search/?api=1&query=37.74681091368141,138.9375298507688" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_4453d9f6238b009c00b0f1861fb7f07e.setContent(html_355c3ee311fccb308408d0bf11caa890);
+            
+        
+
+        marker_d75b39efd3262a81436b9afec2ad2f00.bindPopup(popup_4453d9f6238b009c00b0f1861fb7f07e)
+        ;
+
+        
+    
+    
+            marker_d75b39efd3262a81436b9afec2ad2f00.bindTooltip(
+                `<div>
+                     2025-04-25_巻潟東IC // 自：10:46
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d75b39efd3262a81436b9afec2ad2f00.setIcon(icon_7f00515f7030a3da16ef416d68d57cc1);
+            
+    
+            var marker_6dea2b2d661a74322ba520eb8ed7f7ae = L.marker(
+                [37.873903066947676, 139.0389190207319],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_5a6aa92705bcd57f36eab57a4e1e79e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f0c11dbc3e1021200104cf2a60eb069c = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_49cd57e2cf88f67a70b0b40de3ae3293 = $(`<div id="html_49cd57e2cf88f67a70b0b40de3ae3293" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>新潟中央IC // 至：10:59</div><a href="https://www.google.com/maps/search/?api=1&query=37.873903066947676,139.0389190207319" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_f0c11dbc3e1021200104cf2a60eb069c.setContent(html_49cd57e2cf88f67a70b0b40de3ae3293);
+            
+        
+
+        marker_6dea2b2d661a74322ba520eb8ed7f7ae.bindPopup(popup_f0c11dbc3e1021200104cf2a60eb069c)
+        ;
+
+        
+    
+    
+            marker_6dea2b2d661a74322ba520eb8ed7f7ae.bindTooltip(
+                `<div>
+                     2025-04-25_新潟中央IC // 至：10:59
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dea2b2d661a74322ba520eb8ed7f7ae.setIcon(icon_5a6aa92705bcd57f36eab57a4e1e79e6);
+            
+    
+            var marker_92cb1e649cb08c9e942e2aedee9e5091 = L.marker(
+                [37.883862878159455, 139.0367347868897],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_71c982adbd5e4cdb294eb564aeec51c1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_6df85d720ca7d4fc58444f0f381ae8c6 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ab2d9cfe83dbf5304fb33f6f36f4a43f = $(`<div id="html_ab2d9cfe83dbf5304fb33f6f36f4a43f" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>デイリーヤマザキ 新潟鳥屋野潟店</div><a href="https://www.google.com/maps/search/?api=1&query=37.883862878159455,139.0367347868897" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_6df85d720ca7d4fc58444f0f381ae8c6.setContent(html_ab2d9cfe83dbf5304fb33f6f36f4a43f);
+            
+        
+
+        marker_92cb1e649cb08c9e942e2aedee9e5091.bindPopup(popup_6df85d720ca7d4fc58444f0f381ae8c6)
+        ;
+
+        
+    
+    
+            marker_92cb1e649cb08c9e942e2aedee9e5091.bindTooltip(
+                `<div>
+                     2025-04-25_デイリーヤマザキ 新潟鳥屋野潟店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_92cb1e649cb08c9e942e2aedee9e5091.setIcon(icon_71c982adbd5e4cdb294eb564aeec51c1);
+            
+    
+            var marker_d60dec52f940cf33341dc15498ae177e = L.marker(
+                [37.91549528992876, 139.0540399877252],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_3adff60fb8e9f538b135bed519698612 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5fd71a399fee7feac06137d1beef358f = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3d31d8490e956b23abaf09ff111d48ed = $(`<div id="html_3d31d8490e956b23abaf09ff111d48ed" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>新潟伊勢丹 駐車場</div><a href="https://www.google.com/maps/search/?api=1&query=37.91549528992876,139.0540399877252" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_5fd71a399fee7feac06137d1beef358f.setContent(html_3d31d8490e956b23abaf09ff111d48ed);
+            
+        
+
+        marker_d60dec52f940cf33341dc15498ae177e.bindPopup(popup_5fd71a399fee7feac06137d1beef358f)
+        ;
+
+        
+    
+    
+            marker_d60dec52f940cf33341dc15498ae177e.bindTooltip(
+                `<div>
+                     2025-04-25_新潟伊勢丹 駐車場
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d60dec52f940cf33341dc15498ae177e.setIcon(icon_3adff60fb8e9f538b135bed519698612);
+            
+    
+            var marker_0360a9f1e67cdc72a9424dc013e7e9aa = L.marker(
+                [37.91617211230303, 139.05519330001684],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_2bcda55f6afb085879644cc5370ca144 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ec6a2871da7639286ce0cd1354cada86 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_ff872d712b9055eecbf215e79f81b8fe = $(`<div id="html_ff872d712b9055eecbf215e79f81b8fe" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>万代シティバスセンター</div><a href="https://www.google.com/maps/search/?api=1&query=37.91617211230303,139.05519330001684" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_ec6a2871da7639286ce0cd1354cada86.setContent(html_ff872d712b9055eecbf215e79f81b8fe);
+            
+        
+
+        marker_0360a9f1e67cdc72a9424dc013e7e9aa.bindPopup(popup_ec6a2871da7639286ce0cd1354cada86)
+        ;
+
+        
+    
+    
+            marker_0360a9f1e67cdc72a9424dc013e7e9aa.bindTooltip(
+                `<div>
+                     2025-04-25_万代シティバスセンター
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0360a9f1e67cdc72a9424dc013e7e9aa.setIcon(icon_2bcda55f6afb085879644cc5370ca144);
+            
+    
+            var marker_6a0bc64db0311aada414e6ba3dee738d = L.marker(
+                [37.9119681, 139.0614003],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_74d91f0d2ac7c5c57bee18b16bdf7b80 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cc756fcf3fdfe9faa9a09ca0735df070 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_a7662df1c39a6eca0a857b74963f5be5 = $(`<div id="html_a7662df1c39a6eca0a857b74963f5be5" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>新潟駅</div><a href="https://www.google.com/maps/search/?api=1&query=37.9119681,139.0614003" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_cc756fcf3fdfe9faa9a09ca0735df070.setContent(html_a7662df1c39a6eca0a857b74963f5be5);
+            
+        
+
+        marker_6a0bc64db0311aada414e6ba3dee738d.bindPopup(popup_cc756fcf3fdfe9faa9a09ca0735df070)
+        ;
+
+        
+    
+    
+            marker_6a0bc64db0311aada414e6ba3dee738d.bindTooltip(
+                `<div>
+                     2025-04-25_新潟駅
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6a0bc64db0311aada414e6ba3dee738d.setIcon(icon_74d91f0d2ac7c5c57bee18b16bdf7b80);
+            
+    
+            var marker_fff3383110f99ae5cf8549bf86c5e449 = L.marker(
+                [37.962522677872364, 139.2868222625055],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_6a31c2f397a7ae58684b0fc6f6c9e438 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2d64eb14a7f8bf8c6f97e65fb368080e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_bdf569426383554818bd3318de3452a4 = $(`<div id="html_bdf569426383554818bd3318de3452a4" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>聖籠新発田IC // 自：13:54</div><a href="https://www.google.com/maps/search/?api=1&query=37.962522677872364,139.2868222625055" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_2d64eb14a7f8bf8c6f97e65fb368080e.setContent(html_bdf569426383554818bd3318de3452a4);
+            
+        
+
+        marker_fff3383110f99ae5cf8549bf86c5e449.bindPopup(popup_2d64eb14a7f8bf8c6f97e65fb368080e)
+        ;
+
+        
+    
+    
+            marker_fff3383110f99ae5cf8549bf86c5e449.bindTooltip(
+                `<div>
+                     2025-04-25_聖籠新発田IC // 自：13:54
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fff3383110f99ae5cf8549bf86c5e449.setIcon(icon_6a31c2f397a7ae58684b0fc6f6c9e438);
+            
+    
+            var marker_518ae8e470b343f1eafbc6b891062f69 = L.marker(
+                [38.042008922548845, 139.3632519560793],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_4450e5f8d7f1a08817e3a5d055d8617f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_21c2ae2f284d7adb2cc05a1458f2c1ec = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_3e1a4a2d626795d4805cb012ffd5f496 = $(`<div id="html_3e1a4a2d626795d4805cb012ffd5f496" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>胎内本線FF（中条本線料金所） // 至：14:08</div><a href="https://www.google.com/maps/search/?api=1&query=38.042008922548845,139.3632519560793" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_21c2ae2f284d7adb2cc05a1458f2c1ec.setContent(html_3e1a4a2d626795d4805cb012ffd5f496);
+            
+        
+
+        marker_518ae8e470b343f1eafbc6b891062f69.bindPopup(popup_21c2ae2f284d7adb2cc05a1458f2c1ec)
+        ;
+
+        
+    
+    
+            marker_518ae8e470b343f1eafbc6b891062f69.bindTooltip(
+                `<div>
+                     2025-04-25_胎内本線FF（中条本線料金所） // 至：14:08
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_518ae8e470b343f1eafbc6b891062f69.setIcon(icon_4450e5f8d7f1a08817e3a5d055d8617f);
+            
+    
+            var marker_d4cc769da23ff6f084c9b461d89a9add = L.marker(
+                [38.0723006, 139.7310442],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_60c2fd54e54060adca74f60d3c77e21c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0d7a7a4789f9e7ecbdbf9907420daf78 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_685fa15a43cd3adc7000736244926118 = $(`<div id="html_685fa15a43cd3adc7000736244926118" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>道の駅 白い森おぐに</div><a href="https://www.google.com/maps/search/?api=1&query=38.0723006,139.7310442" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_0d7a7a4789f9e7ecbdbf9907420daf78.setContent(html_685fa15a43cd3adc7000736244926118);
+            
+        
+
+        marker_d4cc769da23ff6f084c9b461d89a9add.bindPopup(popup_0d7a7a4789f9e7ecbdbf9907420daf78)
+        ;
+
+        
+    
+    
+            marker_d4cc769da23ff6f084c9b461d89a9add.bindTooltip(
+                `<div>
+                     2025-04-25_道の駅 白い森おぐに
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d4cc769da23ff6f084c9b461d89a9add.setIcon(icon_60c2fd54e54060adca74f60d3c77e21c);
+            
+    
+            var marker_d8fc8d07c3260cf84415baa3bfa46262 = L.marker(
+                [38.0260251, 139.9937836],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_fe1e6ad41f1363b5e177efecef34ff62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c2eb46bca742927d38f3ba29ef591fb7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_dd115182628ee3b2cee42914ed81cc43 = $(`<div id="html_dd115182628ee3b2cee42914ed81cc43" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>道の駅 いいで</div><a href="https://www.google.com/maps/search/?api=1&query=38.0260251,139.9937836" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_c2eb46bca742927d38f3ba29ef591fb7.setContent(html_dd115182628ee3b2cee42914ed81cc43);
+            
+        
+
+        marker_d8fc8d07c3260cf84415baa3bfa46262.bindPopup(popup_c2eb46bca742927d38f3ba29ef591fb7)
+        ;
+
+        
+    
+    
+            marker_d8fc8d07c3260cf84415baa3bfa46262.bindTooltip(
+                `<div>
+                     2025-04-25_道の駅 いいで
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d8fc8d07c3260cf84415baa3bfa46262.setIcon(icon_fe1e6ad41f1363b5e177efecef34ff62);
+            
+    
+            var marker_340bb12339db90ec5846206febd7c24a = L.marker(
+                [38.03827737183504, 140.64416010789665],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_f24ff9b26fa7bf78c2340e27bf7b613b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_584d69a38f0fd4802ef6afcbcc6b663e = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_464c2d7e4e98bec7f16153bf1476585c = $(`<div id="html_464c2d7e4e98bec7f16153bf1476585c" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>宇佐美 ４号白石インター</div><a href="https://www.google.com/maps/search/?api=1&query=38.03827737183504,140.64416010789665" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_584d69a38f0fd4802ef6afcbcc6b663e.setContent(html_464c2d7e4e98bec7f16153bf1476585c);
+            
+        
+
+        marker_340bb12339db90ec5846206febd7c24a.bindPopup(popup_584d69a38f0fd4802ef6afcbcc6b663e)
+        ;
+
+        
+    
+    
+            marker_340bb12339db90ec5846206febd7c24a.bindTooltip(
+                `<div>
+                     2025-04-25_宇佐美 ４号白石インター
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_340bb12339db90ec5846206febd7c24a.setIcon(icon_f24ff9b26fa7bf78c2340e27bf7b613b);
+            
+    
+            var marker_22518b2f182dc90fa8f2a5098ac52466 = L.marker(
+                [38.049364, 140.7280658],
+                {
+}
+            ).addTo(feature_group_4c287cd827c87f36749adb6ce27f9357);
+        
+    
+            var icon_c3291dafaeefbe6b488b23df36531c34 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d04b8ccca5f115eb5ce1425fccfc99d7 = L.popup({
+  "maxWidth": 250,
+});
+
+        
+            
+                var html_4ec9e936a20ed90e3cf7bb7d8576a9f6 = $(`<div id="html_4ec9e936a20ed90e3cf7bb7d8576a9f6" style="width: 100.0%; height: 100.0%;"><div>2025-04-25</div><div>まるまつ 大河原店</div><a href="https://www.google.com/maps/search/?api=1&query=38.049364,140.7280658" target="_blank" rel="noopener noreferrer">Googleマップで開く</a></div>`)[0];
+                popup_d04b8ccca5f115eb5ce1425fccfc99d7.setContent(html_4ec9e936a20ed90e3cf7bb7d8576a9f6);
+            
+        
+
+        marker_22518b2f182dc90fa8f2a5098ac52466.bindPopup(popup_d04b8ccca5f115eb5ce1425fccfc99d7)
+        ;
+
+        
+    
+    
+            marker_22518b2f182dc90fa8f2a5098ac52466.bindTooltip(
+                `<div>
+                     2025-04-25_まるまつ 大河原店
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22518b2f182dc90fa8f2a5098ac52466.setIcon(icon_c3291dafaeefbe6b488b23df36531c34);
+            
+    
+            feature_group_4c287cd827c87f36749adb6ce27f9357.addTo(map_2fa1b0d7cb086ce36dcb85a7507692b2);
+        
+    
+            var layer_control_d324e78a03a07d8af0209653fb7294a1_layers = {
+                base_layers : {
+                },
+                overlays :  {
+                    "\u003cspan style=\"display:inline-flex; align-items:center;\"\u003e\u003cspan style=\"display:inline-block; width:12px; height:12px; border-radius:50%; background:#d63e2a; border:1px solid #333; margin-right:6px; flex-shrink:0;\"\u003e\u003c/span\u003e2025-04-24\u003c/span\u003e" : feature_group_311e13f670cac73e8f3665e135fa7e44,
+                    "\u003cspan style=\"display:inline-flex; align-items:center;\"\u003e\u003cspan style=\"display:inline-block; width:12px; height:12px; border-radius:50%; background:#38aadd; border:1px solid #333; margin-right:6px; flex-shrink:0;\"\u003e\u003c/span\u003e2025-04-25\u003c/span\u003e" : feature_group_4c287cd827c87f36749adb6ce27f9357,
+                },
+            };
+            let layer_control_d324e78a03a07d8af0209653fb7294a1 = L.control.layers(
+                layer_control_d324e78a03a07d8af0209653fb7294a1_layers.base_layers,
+                layer_control_d324e78a03a07d8af0209653fb7294a1_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_2fa1b0d7cb086ce36dcb85a7507692b2);
+
+        
+</script>
+</html>

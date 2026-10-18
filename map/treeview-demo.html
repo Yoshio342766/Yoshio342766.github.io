@@ -4,146 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TreeView UI by Details Demo</title>
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #f7f9fa;
-            color: #333;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #eaeaea;
-            padding-bottom: 10px;
-        }
-
-        /* ツリービュー全体のスタイル */
-        .treeview {
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        .treeview ul {
-            list-style: none;
-            padding-left: 20px;
-            margin: 4px 0;
-        }
-
-        .treeview > ul {
-            padding-left: 0;
-        }
-
-        .treeview li {
-            margin: 4px 0;
-            position: relative;
-        }
-
-        /* details / summary のカスタマイズ */
-        .treeview details {
-            margin: 2px 0;
-        }
-
-        .treeview summary {
-            cursor: pointer;
-            padding: 4px 6px;
-            border-radius: 4px;
-            transition: background-color 0.2s;
-        }
-
-        .treeview summary:hover {
-            background-color: #f0f4f8;
-        }
-
-        /* マーカー（矢印）の見た目を変更する例 */
-        .treeview details > summary::marker {
-            content: "(+) ";
-            color: #6b7280;
-            font-weight: bold;
-        }
-
-        .treeview details[open] > summary::marker {
-            content: "(-) ";
-            color: #6b7280;
-            font-weight: bold;
-        }
-
-        /* フォルダではない末端（ファイル）のスタイル */
-        .treeview .file {
-            padding: 4px 6px 4px 20px;
-            color: #4b5563;
-        }
-
-        /* ファイル部分のリンクスタイル調整 */
-        .treeview .file a {
-            color: #2563eb;
-            text-decoration: none;
-        }
-
-        .treeview .file a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="treeview-demo.css">
 </head>
 <body>
 
     <h1>HTMLだけでつくる TreeView UI デモ</h1>
-    <p>JavaScriptを使わず、<code>&lt;details&gt;</code> と <code>&lt;summary&gt;</code> タグだけで階層構造を表現しています。</p>
+    <p>🚕お出かけ 🅿️立ち寄りスッポト</p>
 
     <div class="treeview">
         <ul>
             <li>
                 <details>
-                    <summary>Root</summary>
+                    <summary>スタート</summary>
                     <ul>
                         <li>
                             <details>
-                                <summary>System</summary>
+                                <summary>全体（年指定）</summary>
                                 <ul>
-                                    <li>
-                                        <details>
-                                            <summary>Applications</summary>
-                                            <ul>
-                                                <li class="file">Calendar.app</li>
-                                                <li class="file">Contacts.app</li>
-                                                <li class="file">Mail.app</li>
-                                            </ul>
-                                        </details>
-                                    </li>
+                                    <li class="file"><a href="Geocode_places2.html" target="_blank"
+                                            rel="noopener noreferrer">2016年～</a></li>
                                 </ul>
                             </details>
                         </li>
                         <li>
                             <details>
-                                <summary>Users</summary>
+                                <summary>個別（年、日付指定）</summary>
                                 <ul>
-                                    <li class="file">root</li>
-                                    <li class="file">user</li>
                                     <li>
                                         <details>
-                                            <summary>Applications</summary>
-                                        </details>
-                                    </li>
-                                    <li>
-                                        <details>
-                                            <summary>Desktop</summary>
+                                            <summary>２０２６年</summary>
                                             <ul>
-                                                <li class="file">memo.txt</li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2026-06-16_高崎、桐生、佐久.html">2026-06-16_高崎、桐生、佐久</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2026-05-10_長岡.html">2026-05-10_長岡</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2026-03-24_高崎、軽井沢.html">2026-03-24_高崎、軽井沢</a>
+                                                </li>
                                             </ul>
                                         </details>
                                     </li>
                                     <li>
                                         <details>
-                                            <summary>Documents</summary>
+                                            <summary>２０２５年</summary>
                                             <ul>
-                                                <li class="file"><a href="https://www.yahoo.co.jp/" target="_blank" rel="noopener noreferrer">yahoo.co.jp</a></li>
-                                                <li class="file"><a href="https://www.google.com/" target="_blank" rel="noopener noreferrer">google.com</a></li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-12-12_御殿場、牧之原、岡崎市.html">2025-12-12_御殿場、牧之原、岡崎市</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-09-28_安曇野市、塩尻市奈良井.html">2025-09-28_安曇野市、塩尻市奈良井</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-07-27_日光、宇都宮.html">2025-07-27_日光、宇都宮</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-06-17_鶴ヶ島市、秩父市.html">2025-06-17_鶴ヶ島市、秩父市</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-04-24_長岡、柏崎.html">2025-04-24_長岡、柏崎</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-03-23_高崎、軽井沢.html">2025-03-23_高崎、軽井沢</a>
+                                                </li>
+                                                <li class="file"><a target="_blank" rel="noopener noreferrer"
+                                                        href="2025-02-14_佐野、水戸、いわき.html">2025-02-14_佐野、水戸、いわき</a>
+                                                </li>
                                             </ul>
                                         </details>
                                     </li>
