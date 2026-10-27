@@ -1,4 +1,4 @@
-let allData =[]; // データを格納する配列
+let allData = []; // データを格納する配列
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -64,21 +64,18 @@ function renderTable(data) {
         // 5列目（Googleマップリンク）の生成
         const mapTd = document.createElement('td');
         if (item.lat && item.lng) {
-            // 安全なボタン形式に変更し、クリック時に直接Googleマップを開く処理を仕込みます
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'map-link';
-            button.textContent = '🗺️ 地図を表示';
-            button.style.cursor = 'pointer';
-            button.style.border = 'none';
+            // 正しいGoogleマップのURL構造をしっかりと組み立てます
+            const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
             
-            // クリックイベントで安全に別タブを開く
-            button.addEventListener('click', () => {
-                const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
-                window.open(mapUrl, '_blank', 'noopener,noreferrer');
-            });
+            // 安全なリンクタグを作成
+            const link = document.createElement('a');
+            link.href = mapUrl;
+            link.target = '_blank';
+            link.rel = 'noopener noreferrer';
+            link.className = 'map-link';
+            link.textContent = '🗺️ 地図を表示';
             
-            mapTd.appendChild(button);
+            mapTd.appendChild(link);
         } else {
             mapTd.textContent = '-';
         }
