@@ -1,4 +1,4 @@
-let allData =;
+let allData =[]; // データを格納する配列
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
