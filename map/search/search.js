@@ -1,8 +1,8 @@
-let allData = [];
+let allData =[];
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        // データファイル名を Geocode_places2.tsv に変更
+        // データファイル読み込み
         const response = await fetch('Geocode_places2.tsv');
         if (!response.ok) throw new Error('ファイルの読み込みに失敗しました');
         
@@ -25,7 +25,6 @@ function parseHeaderlessTSV(text) {
     allData = lines.map(line => {
         const values = line.split('\t').map(v => v.trim());
         
-        // 各列のデータをオブジェクトに格納
         return {
             date: values[0] || '', // 1列目: 日付
             name: values[1] || '', // 2列目: 場所・施設名
@@ -46,25 +45,26 @@ function renderTable(data) {
     metaInfo.textContent = `全 ${allData.length} 件中、${data.length} 件を表示しています。`;
 
     if (data.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" class="no-result">該当するデータが見つかりません。</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="5" class="no-result">該当するデータが見つかりません。</td></tr>`;
         return;
     }
 
-    // 行の生成
-    data.forEach(item => {
+    // 行の生成（indexを使って1からの連番を作成）
+    data.forEach((item, index) => {
         const row = document.createElement('tr');
         
-        // 1~3列目（テキスト情報）の追加
+        // 1列目に「No（index + 1）」、2〜4列目に各データを挿入
         row.innerHTML = `
+            <td>${index + 1}</td>
             <td>${item.date}</td>
             <td>${item.name}</td>
             <td>${item.time}</td>
         `;
         
-        // 4列目（Googleマップリンク）の生成
+        // 5列目（Googleマップリンク）の生成
         const mapTd = document.createElement('td');
         if (item.lat && item.lng) {
-            mapTd.innerHTML = `<a href="https://google.com{item.lat},${item.lng}" target="_blank" class="map-link">🗺️ 地図を表示</a>`;
+            mapTd.innerHTML = `<a href="https://google.com/maps?q=${item.lat},${item.lng}" target="_blank" class="map-link">🗺️ 地図を表示</a>`;
         } else {
             mapTd.textContent = '-';
         }
@@ -74,7 +74,7 @@ function renderTable(data) {
     });
 }
 
-// 検索入力の監視（スペース区切りの多重ワード検索に対応）
+// 検索入力の監視
 document.getElementById('searchBox').addEventListener('input', (e) => {
     const query = e.target.value.replace(/　/g, ' ').toLowerCase().trim();
     
@@ -85,7 +85,6 @@ document.getElementById('searchBox').addEventListener('input', (e) => {
 
     const keywords = query.split(/\s+/);
 
-    // フィルタリング処理（日付、場所、時間から検索）
     const filteredData = allData.filter(item => {
         return keywords.every(keyword => {
             return item.date.toLowerCase().includes(keyword) || 

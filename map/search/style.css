@@ -65,11 +65,29 @@ th {
     text-align: center;
 }
 
-/* 日付・時間・地図の列は途中で改行させない */
+/* 1列目(No)、2列目(日付)、5列目(地図ボタン)は中央寄せ */
 td:nth-child(1),
-td:nth-child(3),
-td:nth-child(4) {
+td:nth-child(2),
+td:nth-child(5) {
+    text-align: center;
+}
+
+/* No、日付、時間、地図ボタンの列は途中で改行させない */
+td:nth-child(1),
+td:nth-child(2),
+td:nth-child(4),
+td:nth-child(5) {
     white-space: nowrap;
+}
+
+/* 1行おき（偶数行）に背景色を変更 */
+tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+/* マウスホバー時に行をハイライト */
+tr:hover {
+    background-color: #f1f5f9;
 }
 
 .no-result {
