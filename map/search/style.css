@@ -1,0 +1,93 @@
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    margin: 30px;
+    color: #333;
+    background-color: #f9f9f9;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+#searchBox {
+    padding: 12px;
+    width: 100%;
+    max-width: 400px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.meta-info {
+    margin: 15px 0;
+    font-size: 14px;
+    color: #666;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 600px;
+}
+
+th, td {
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+}
+
+/* データ行は基本左寄せ */
+td {
+    text-align: left;
+}
+
+/* 見出しは中央寄せ */
+th {
+    background-color: #f5f5f5;
+    font-weight: bold;
+    position: sticky;
+    top: 0;
+    text-align: center;
+}
+
+/* 日付・時間・地図の列は途中で改行させない */
+td:nth-child(1),
+td:nth-child(3),
+td:nth-child(4) {
+    white-space: nowrap;
+}
+
+.no-result {
+    text-align: center;
+    color: #999;
+    padding: 30px;
+}
+
+.map-link {
+    display: inline-block;
+    background: #4285F4;
+    color: white;
+    padding: 6px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.map-link:hover {
+    background: #357ae8;
+}

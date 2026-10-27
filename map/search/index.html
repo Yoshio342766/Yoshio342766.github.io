@@ -4,22 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>位置情報データベース検索</title>
-    <style>
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 30px; color: #333; background-color: #f9f9f9; }
-        .container { max-width: 1000px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        h1 { font-size: 24px; margin-bottom: 20px; }
-        #searchBox { padding: 12px; width: 100%; max-width: 400px; font-size: 16px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .meta-info { margin: 15px 0; font-size: 14px; color: #666; }
-        .table-wrapper { overflow-x: auto; margin-top: 10px; }
-        table { border-collapse: collapse; width: 100%; min-width: 600px; }
-        th, td { border: 1px solid #e0e0e0; padding: 12px; text-align: left; }
-        th { background-color: #f5f5f5; font-weight: bold; position: sticky; top: 0; }
-        tr:nth-child(even) { background-color: #fafafa; }
-        tr:hover { background-color: #f1f5f9; }
-        .no-result { text-align: center; color: #999; padding: 30px; }
-        .map-link { display: inline-block; background: #4285F4; color: white; padding: 4px 8px; text-decoration: none; border-radius: 4px; font-size: 12px; }
-        .map-link:hover { background: #357ae8; }
-    </style>
+    <!-- 分離したCSSファイルを読み込む -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -39,7 +25,7 @@
                 <tr>
                     <th>日付</th>
                     <th>場所・施設名</th>
-                    <th>時間</th>
+                    <th>備考</th>
                     <th>地図</th>
                 </tr>
             </thead>
