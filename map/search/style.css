@@ -19,6 +19,14 @@ h1 {
     margin-bottom: 20px;
 }
 
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap; /* 画面が狭いときは自動で折り返すお守り */
+    margin-bottom: 20px;
+}
+
 #searchBox {
     padding: 12px;
     width: 100%;
@@ -27,6 +35,21 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
+    margin-bottom: 0; /* controls配下に入ったためマージンをリセット */
+}
+
+.sort-options {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 16px;
+}
+
+.sort-options label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
 }
 
 .meta-info {

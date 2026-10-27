@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>位置情報データベース検索</title>
-
+    <!-- 分離したCSSファイルを読み込む -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,8 +12,18 @@
 <div class="container">
     <h1>位置情報データベース検索</h1>
     
-    <!-- 検索入力欄 -->
-    <input type="text" id="searchBox" placeholder="キーワードを入力（日付、場所など）...">
+    <!-- 検索と並び替えのコントロールエリア -->
+    <div class="controls">
+        <!-- 検索入力欄 -->
+        <input type="text" id="searchBox" placeholder="キーワードを入力（日付、場所など）...">
+
+        <!-- 日付並び替えラジオボタン -->
+        <div class="sort-options">
+            <span>日付順：</span>
+            <label><input type="radio" name="dateSort" value="desc" checked> 降順</label>
+            <label><input type="radio" name="dateSort" value="asc"> 昇順</label>
+        </div>
+    </div>
 
     <!-- 件数表示 -->
     <div class="meta-info" id="metaInfo">データを読み込み中...</div>
@@ -23,11 +33,11 @@
         <table>
             <thead>
                 <tr>
-                    <th>No</th> <!-- 先頭にNoを追加 -->
-                    <th>日　付</th>
+                    <th>No</th>
+                    <th>日付</th>
                     <th>場所・施設名</th>
-                    <th>備　考</th>
-                    <th>地　図</th>
+                    <th>時間</th>
+                    <th>地図</th>
                 </tr>
             </thead>
             <tbody id="resultBody">

@@ -1,4 +1,4 @@
-let allData = []; // データを格納する配列
+let allData = [];
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -9,8 +9,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         const text = await response.text();
         parseHeaderlessTSV(text);
         
-        // 初期表示
-        renderTable(allData);
+        // 初期表示（検索窓は空なので全件をフィルタ・ソートして表示）
+        filterAndRender();
     } catch (error) {
         console.error('Error:', error);
         document.getElementById('metaInfo').textContent = 'データの読み込みエラーが発生しました。';
@@ -35,7 +35,38 @@ function parseHeaderlessTSV(text) {
     });
 }
 
-// データを画面に表示する関数
+// 検索フィルターとソートを同時に行い、画面に描画する関数
+function filterAndRender() {
+    const searchBox = document.getElementById('searchBox');
+    const query = searchBox.value.replace(/　/g, ' ').toLowerCase().trim();
+    
+    let filteredData = [...allData]; // 元データを汚さないようにコピー
+
+    // 1. 検索キーワードによる絞り込み
+    if (query) {
+        const keywords = query.split(/\s+/);
+        filteredData = filteredData.filter(item => {
+            return keywords.every(keyword => {
+                return item.date.toLowerCase().includes(keyword) || 
+                       item.name.toLowerCase().includes(keyword) || 
+                       item.time.toLowerCase().includes(keyword);
+            });
+        });
+    }
+
+    // 2. ラジオボタンの状態による日付ソート
+    const sortType = document.querySelector('input[name="dateSort"]:checked').value;
+    filteredData.sort((a, b) => {
+        if (a.date < b.date) return sortType === 'asc' ? -1 : 1;
+        if (a.date > b.date) return sortType === 'asc' ? 1 : -1;
+        return 0;
+    });
+
+    // 3. 画面に描画
+    renderTable(filteredData);
+}
+
+// データを画面に表示するオブジェクト生成関数
 function renderTable(data) {
     const tbody = document.getElementById('resultBody');
     const metaInfo = document.getElementById('metaInfo');
@@ -53,7 +84,6 @@ function renderTable(data) {
     data.forEach((item, index) => {
         const row = document.createElement('tr');
         
-        // 1列目に「No（index + 1）」、2〜4列目に各データを挿入
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${item.date}</td>
@@ -61,21 +91,21 @@ function renderTable(data) {
             <td>${item.time}</td>
         `;
         
-        // 5列目（Googleマップリンク）の生成
         const mapTd = document.createElement('td');
         if (item.lat && item.lng) {
-            // 正しいGoogleマップのURL構造をしっかりと組み立てます
-            const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'map-link';
+            button.textContent = '🗺️ 地図を表示';
+            button.style.cursor = 'pointer';
+            button.style.border = 'none';
             
-            // 安全なリンクタグを作成
-            const link = document.createElement('a');
-            link.href = mapUrl;
-            link.target = '_blank';
-            link.rel = 'noopener noreferrer';
-            link.className = 'map-link';
-            link.textContent = '🗺️ 地図を表示';
+            button.addEventListener('click', () => {
+                const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
+                window.open(mapUrl, '_blank', 'noopener,noreferrer');
+            });
             
-            mapTd.appendChild(link);
+            mapTd.appendChild(button);
         } else {
             mapTd.textContent = '-';
         }
@@ -85,24 +115,10 @@ function renderTable(data) {
     });
 }
 
-// 検索入力の監視
-document.getElementById('searchBox').addEventListener('input', (e) => {
-    const query = e.target.value.replace(/　/g, ' ').toLowerCase().trim();
-    
-    if (!query) {
-        renderTable(allData);
-        return;
-    }
+// イベント監視：検索窓の入力
+document.getElementById('searchBox').addEventListener('input', filterAndRender);
 
-    const keywords = query.split(/\s+/);
-
-    const filteredData = allData.filter(item => {
-        return keywords.every(keyword => {
-            return item.date.toLowerCase().includes(keyword) || 
-                   item.name.toLowerCase().includes(keyword) || 
-                   item.time.toLowerCase().includes(keyword);
-        });
-    });
-
-    renderTable(filteredData);
+// イベント監視：ラジオボタンの切り替え
+document.querySelectorAll('input[name="dateSort"]').forEach(radio => {
+    radio.addEventListener('change', filterAndRender);
 });
