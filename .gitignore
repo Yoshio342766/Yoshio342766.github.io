@@ -10,3 +10,6 @@ Thumbs.db
 
 # Gitの安全なコミット用スクリプトを除外
 git_safe_commit.ps1
+
+# プロジェクト固有の除外設定
+map/temp/
