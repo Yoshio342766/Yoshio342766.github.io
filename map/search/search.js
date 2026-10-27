@@ -64,8 +64,21 @@ function renderTable(data) {
         // 5列目（Googleマップリンク）の生成
         const mapTd = document.createElement('td');
         if (item.lat && item.lng) {
-            const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
-            mapTd.innerHTML = '<a href="' + mapUrl + '" target="_blank" class="map-link">🗺️ 地図を表示</a>';
+            // 安全なボタン形式に変更し、クリック時に直接Googleマップを開く処理を仕込みます
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'map-link';
+            button.textContent = '🗺️ 地図を表示';
+            button.style.cursor = 'pointer';
+            button.style.border = 'none';
+            
+            // クリックイベントで安全に別タブを開く
+            button.addEventListener('click', () => {
+                const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
+                window.open(mapUrl, '_blank', 'noopener,noreferrer');
+            });
+            
+            mapTd.appendChild(button);
         } else {
             mapTd.textContent = '-';
         }
