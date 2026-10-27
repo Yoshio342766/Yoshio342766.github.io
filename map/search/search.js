@@ -64,7 +64,8 @@ function renderTable(data) {
         // 5列目（Googleマップリンク）の生成
         const mapTd = document.createElement('td');
         if (item.lat && item.lng) {
-            mapTd.innerHTML = `<a href="https://google.com/maps?q=${item.lat},${item.lng}" target="_blank" class="map-link">🗺️ 地図を表示</a>`;
+            const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
+            mapTd.innerHTML = '<a href="' + mapUrl + '" target="_blank" class="map-link">🗺️ 地図を表示</a>';
         } else {
             mapTd.textContent = '-';
         }
