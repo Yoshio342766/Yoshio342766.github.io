@@ -28,7 +28,7 @@ function parseHeaderlessTSV(text) {
         return {
             date: values[0] || '', // 1列目: 日付
             name: values[1] || '', // 2列目: 場所・施設名
-            time: values[2] || '', // 3列目: 時間
+            memo: values[2] || '', // 3列目: 備考
             lat:  values[4] || '', // 5列目: 緯度
             lng:  values[5] || ''  // 6列目: 経度
         };
@@ -49,7 +49,7 @@ function filterAndRender() {
             return keywords.every(keyword => {
                 return item.date.toLowerCase().includes(keyword) || 
                        item.name.toLowerCase().includes(keyword) || 
-                       item.time.toLowerCase().includes(keyword);
+                       item.memo.toLowerCase().includes(keyword);
             });
         });
     }
@@ -88,7 +88,7 @@ function renderTable(data) {
             <td>${index + 1}</td>
             <td>${item.date}</td>
             <td>${item.name}</td>
-            <td>${item.time}</td>
+            <td>${item.memo}</td>
         `;
         
         const mapTd = document.createElement('td');
@@ -101,7 +101,7 @@ function renderTable(data) {
             button.style.border = 'none';
             
             button.addEventListener('click', () => {
-                const mapUrl = 'https://google.com' + item.lat + ',' + item.lng;
+                const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
                 window.open(mapUrl, '_blank', 'noopener,noreferrer');
             });
             
