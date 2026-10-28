@@ -2,23 +2,19 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>初期表示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-<div class="bg-transparent">
-    <h2>Menu</h2>
-    <ul>
-        <li>
-		    <button onclick="location.href='https://yoshio342766.github.io/map/treeview.html'">ボタン</button>
-	    </li>
-        <li>
-		    <input type="button" onclick="location.href='./search.html'" value="検索">
-	    </li>
-        <li>
-		    <button type="submit" formaction="treevew.html">Treeview遷移</button>
-	    </li>
-    </ul>
-</div>
+    <div class="background-wrapper"></div>
+    
+    <div class="menu-container">
+        <h1>Menu</h1>
+        <div class="button-group">
+            <a href="treeview.html" class="menu-button">ツリービューへ</a>
+            <a href="search.html" class="menu-button">検索へ</a>
+        </div>
+    </div>
 </body>
 </html>
