@@ -30,7 +30,8 @@ function parseHeaderlessTSV(text) {
             name: values[1] || '', // 2列目: 場所・施設名
             memo: values[2] || '', // 3列目: 備考
             lat:  values[4] || '', // 5列目: 緯度
-            lng:  values[5] || ''  // 6列目: 経度
+            lng:  values[5] || '', // 6列目: 経度
+            seq:  parseInt(values[6], 10) || 0 // 7列目: SEQ_No（日付ソートの第2キー）
         };
     });
 }
@@ -56,10 +57,13 @@ function filterAndRender() {
 
     // 2. ラジオボタンの状態による日付ソート
     const sortType = document.querySelector('input[name="dateSort"]:checked').value;
+    const dir = sortType === 'asc' ? 1 : -1;
     filteredData.sort((a, b) => {
-        if (a.date < b.date) return sortType === 'asc' ? -1 : 1;
-        if (a.date > b.date) return sortType === 'asc' ? 1 : -1;
-        return 0;
+        // 第1キー: 日付
+        if (a.date < b.date) return -1 * dir;
+        if (a.date > b.date) return 1 * dir;
+        // 第2キー: SEQ_No（数値比較。日付と同じ昇順/降順に従う）
+        return (a.seq - b.seq) * dir;
     });
 
     // 3. 画面に描画
