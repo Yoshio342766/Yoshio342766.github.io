@@ -3,7 +3,7 @@ let allData = [];
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         // データファイル読み込み
-        const response = await fetch('data/Geocode_places2.tsv');
+        const response = await fetch('Geocode_places2.tsv');
         if (!response.ok) throw new Error('ファイルの読み込みに失敗しました');
         
         const text = await response.text();
