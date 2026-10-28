@@ -9,7 +9,7 @@ let loadMoreCount = 25;
 // 設定ファイル(search.json)の読み込み
 async function loadConfig() {
     try {
-        const response = await fetch('data/search.json');
+        const response = await fetch('json/search.json');
         if (!response.ok) throw new Error('設定ファイルの読み込みに失敗しました');
         const config = await response.json();
 
