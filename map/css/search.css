@@ -132,3 +132,27 @@ tr:hover {
 .map-link:hover {
     background: #357ae8;
 }
+
+/* もっと見るボタン */
+.load-more-area {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.load-more {
+    padding: 10px 32px;
+    font-size: 15px;
+    color: #4285F4;
+    background: #fff;
+    border: 1px solid #4285F4;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.load-more:hover {
+    background: #eef4ff;
+}
+
+.load-more[hidden] {
+    display: none;
+}

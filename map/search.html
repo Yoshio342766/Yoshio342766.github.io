@@ -15,7 +15,7 @@
     <!-- 検索と並び替えのコントロールエリア -->
     <div class="controls">
         <!-- 検索入力欄 -->
-        <input type="text" id="searchBox" placeholder="検索キーワード" oninput="filterResults()">
+        <input type="text" id="searchBox" placeholder="検索キーワード">
 
         <!-- 日付並び替えラジオボタン -->
         <div class="sort-options">
@@ -44,6 +44,11 @@
                 <!-- JavaScriptで結果を挿入 -->
             </tbody>
         </table>
+    </div>
+
+    <!-- もっと見るボタン -->
+    <div class="load-more-area">
+        <button type="button" id="loadMoreBtn" class="load-more" hidden>もっと見る</button>
     </div>
 </div>
 

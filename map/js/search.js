@@ -1,7 +1,34 @@
 let allData = [];
+let filteredData = [];      // 現在の検索・ソート結果（全件）
+let visibleCount = 0;       // 現在表示している件数
+
+// 表示件数の設定（search.json で上書き。読み込み失敗時はこの値を使用）
+let initialDisplayCount = 25;
+let loadMoreCount = 25;
+
+// 設定ファイル(search.json)の読み込み
+async function loadConfig() {
+    try {
+        const response = await fetch('data/search.json');
+        if (!response.ok) throw new Error('設定ファイルの読み込みに失敗しました');
+        const config = await response.json();
+
+        const initial = parseInt(config.initialDisplayCount, 10);
+        if (initial > 0) initialDisplayCount = initial;
+
+        // loadMoreCount 未指定の場合は初期表示件数と同じにする
+        const more = parseInt(config.loadMoreCount, 10);
+        loadMoreCount = more > 0 ? more : initialDisplayCount;
+    } catch (error) {
+        console.warn('設定ファイルを読み込めないため既定値を使用します:', error);
+        loadMoreCount = initialDisplayCount;
+    }
+}
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+        await loadConfig();
+
         // データファイル読み込み
         const response = await fetch('data/Geocode_places2.tsv');
         if (!response.ok) throw new Error('ファイルの読み込みに失敗しました');
@@ -41,7 +68,7 @@ function filterAndRender() {
     const searchBox = document.getElementById('searchBox');
     const query = searchBox.value.replace(/　/g, ' ').toLowerCase().trim();
     
-    let filteredData = [...allData]; // 元データを汚さないようにコピー
+    filteredData = [...allData]; // 元データを汚さないようにコピー
 
     // 1. 検索キーワードによる絞り込み
     if (query) {
@@ -66,22 +93,54 @@ function filterAndRender() {
         return (a.seq - b.seq) * dir;
     });
 
-    // 3. 画面に描画
-    renderTable(filteredData);
+    // 3. 表示件数を初期値に戻して描画（検索・ソート変更時）
+    visibleCount = initialDisplayCount;
+    renderTable();
+}
+
+// 「もっと見る」：表示件数を追加して再描画
+function loadMore() {
+    visibleCount += loadMoreCount;
+    renderTable();
 }
 
 // データを画面に表示するオブジェクト生成関数
-function renderTable(data) {
+function renderTable() {
     const tbody = document.getElementById('resultBody');
     const metaInfo = document.getElementById('metaInfo');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
     tbody.innerHTML = '';
 
-    // 件数表示の更新
-    metaInfo.textContent = `全 ${allData.length} 件中、${data.length} 件を表示しています。`;
+    const total = allData.length;
+    const hit = filteredData.length;
+    const query = document.getElementById('searchBox').value.trim();
 
-    if (data.length === 0) {
+    if (hit === 0) {
+        metaInfo.textContent = query
+            ? `全 ${total} 件中、該当 0 件です。`
+            : `全 ${total} 件中、0 件です。`;
+        loadMoreBtn.hidden = true;
         tbody.innerHTML = `<tr><td colspan="5" class="no-result">該当するデータが見つかりません。</td></tr>`;
         return;
+    }
+
+    const shown = Math.min(visibleCount, hit);
+    const data = filteredData.slice(0, shown);
+
+    // 件数表示の更新（キーワード入力時は該当件数を明示）
+    if (query) {
+        metaInfo.textContent = `全 ${total} 件中、該当 ${hit} 件（うち ${shown} 件を表示しています）。`;
+    } else {
+        metaInfo.textContent = `全 ${total} 件中、${shown} 件を表示しています。`;
+    }
+
+    // 「もっと見る」ボタンの表示制御
+    const remaining = hit - shown;
+    if (remaining > 0) {
+        loadMoreBtn.hidden = false;
+        loadMoreBtn.textContent = `もっと見る（残り ${remaining} 件）`;
+    } else {
+        loadMoreBtn.hidden = true;
     }
 
     // 行の生成（indexを使って1からの連番を作成）
@@ -126,3 +185,6 @@ document.getElementById('searchBox').addEventListener('input', filterAndRender);
 document.querySelectorAll('input[name="dateSort"]').forEach(radio => {
     radio.addEventListener('change', filterAndRender);
 });
+
+// イベント監視：もっと見るボタン
+document.getElementById('loadMoreBtn').addEventListener('click', loadMore);
