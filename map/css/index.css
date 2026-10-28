@@ -22,7 +22,7 @@ body::before {
     background-image: url('../image/index_background.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.5; /* ここで画像の透過度を調整（0.0〜1.0） */
+    opacity: 0.8; /* ここで画像の透過度を調整（0.0〜1.0） */
     z-index: -1; /* コンテンツより背面に配置 */
 }
 
