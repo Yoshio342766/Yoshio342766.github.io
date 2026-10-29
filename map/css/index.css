@@ -22,7 +22,7 @@ body::before {
     background-image: url('../image/index_background.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.7; /* ここで画像の透過度を調整（0.0〜1.0） */
+    opacity: 0.6; /* ここで画像の透過度を調整（0.0〜1.0） */
     z-index: -1; /* コンテンツより背面に配置 */
 }
 
@@ -30,12 +30,18 @@ body::before {
 .menu-container {
     text-align: center;
     z-index: 1;
+    padding: 30px 50px;                       /* 枠の内側の余白 */
+    background-color: rgba(173, 216, 255, 0.5); /* 薄い青（透過度 0.0〜1.0 で調整） */
+    border-radius: 16px;                      /* 角の丸み */
+    border: 1px solid rgba(255, 255, 255, 0.6); /* 縁取り（不要なら削除可） */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* 軽い影（不要なら削除可） */
 }
 
 /* タイトルのスタイル */
 .menu-container h1 {
     font-size: 2.5rem;
-    margin-bottom: 30px;
+    margin-top: 0;
+    margin-bottom: 10px;
     color: #333;
 }
 
