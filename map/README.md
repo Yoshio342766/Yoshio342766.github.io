@@ -38,7 +38,7 @@ GitHub Pages（github.io）で公開しています。サーバー処理は不�
 │   ├─ Geocode_places2.tsv   立ち寄りスポットのデータ
 │   └─ *.html                地図ページ（全体・日付別）
 └─ image/
-    └─ index_background.jpg  メニューの背景画像
+    └─ index_background.webp  メニューの背景画像
 ```
 
 ## データファイル（`data/Geocode_places2.tsv`）
@@ -101,7 +101,8 @@ GitHub Pages（github.io）で公開しています。サーバー処理は不�
 
 ```bash
 python -m http.server 8000
-# ブラウザで http://localhost:8000/ を開く
+# ブラウザで http://localhost:8000/map/ を開く
+終了は [ctrl] + [c] 
 ```
 
 ## 使用技術
