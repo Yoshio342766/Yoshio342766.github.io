@@ -23,7 +23,7 @@ body::before {
     background-image: url('../image/index_background.webp'); /* 背景画像のパスを指定 */
     background-size: cover;
     background-position: center;
-    opacity: 0.6; /* ここで画像の透過度を調整（0.0〜1.0） */
+    opacity: 0.6; /* ここで画像の透過度を調整（0.0:完全透明〜1.0:完全不透明） */
     z-index: -1; /* コンテンツより背面に配置 */
 }
 
@@ -35,7 +35,7 @@ body::before {
     background-color: rgba(173, 216, 255, 0.5); /* 薄い青（透過度 0.0〜1.0 で調整） */
     border-radius: 16px;                      /* 角の丸み */
     border: 1px solid rgba(255, 255, 255, 0.6); /* 縁取り（不要なら削除可） */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* 軽い影（不要なら削除可） */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* 軽い影（不要なら削除可） */
 }
 
 /* タイトルのスタイル */
