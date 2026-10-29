@@ -1,5 +1,6 @@
 /* 画面全体に背景画像を設定するための親要素 */
 body {
+    background-color: #dbe9f6; /* 画像に近い色にすると切り替わりが目立たない */
     margin: 0;
     padding: 0;
     height: 100vh;
