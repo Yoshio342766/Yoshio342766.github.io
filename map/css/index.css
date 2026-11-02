@@ -36,6 +36,11 @@ body::before {
     border-radius: 16px;                      /* 角の丸み */
     border: 1px solid rgba(255, 255, 255, 0.6); /* 縁取り（不要なら削除可） */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* 軽い影（不要なら削除可） */
+    
+    /* 【変更点】画面の中央に固定する */
+    position: absolute;       /* body の相対位置を指定するため必須 */
+    top: 30%;                 /* 画面の高さの半分（中央）に配置 */
+    transform: translateY(-30%); /* 要素自身の高さの半分を上にずらす（正確な中央にするため） */ 
 }
 
 /* タイトルのスタイル */
