@@ -10,6 +10,7 @@ body {
     font-family: sans-serif;
     position: relative;
     overflow: hidden;
+    font-family: 'Kosugi Maru', sans-serif; /* Kosugi Maru フォントを適用 */
 }
 
 /* 背景画像のみを透過させるための疑似要素 */
