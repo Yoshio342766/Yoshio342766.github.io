@@ -79,5 +79,5 @@ body::before {
 
 /* フォントを指定するスタイル */
 body {
-    font-family: "Hiragino Maru Gothic Pro", "Hiragino Kaku Gothic ProN", sans-serif;
+     font-family: sans-serif;
 }
