@@ -9,7 +9,7 @@ let loadMoreCount = 25;
 // 設定ファイル(search.json)の読み込み
 async function loadConfig() {
     try {
-        const response = await fetch('json/search.json');
+        const response = await fetch('data/search.json');
         if (!response.ok) throw new Error('設定ファイルの読み込みに失敗しました');
         const config = await response.json();
 
@@ -147,10 +147,6 @@ function renderTable() {
     data.forEach((item, index) => {
         const row = document.createElement('tr');
         
-        // 【修正】改行コードが含まれている場合、文字列を処理して改行を防ぐ
-        // item.date, item.name, item.memo が改行を含む場合は、\n を空文字に置換するなどの処理が必要
-        // 例：item.name.replace(/\n/g, '')
-
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${item.date}</td>
@@ -186,7 +182,7 @@ function renderTable() {
 document.getElementById('searchBox').addEventListener('input', filterAndRender);
 
 // イベント監視：ラジオボタンの切り替え
-window.querySelectorAll('input[name="dateSort"]').forEach(radio => { // 【修正】window を大文字にする（ブラウザ依存）
+document.querySelectorAll('input[name="dateSort"]').forEach(radio => {
     radio.addEventListener('change', filterAndRender);
 });
 
