@@ -10,7 +10,7 @@ body {
     font-family: sans-serif;
     position: relative;
     overflow: hidden;
-    font-family: 'Kosugi Maru', sans-serif; /* Kosugi Maru フォントを適用 */
+    font-family: "Kosugi Maru", sans-serif; /* Kosugi Maru フォントを適用 */
 }
 
 /* 背景画像のみを透過させるための疑似要素 */
@@ -38,17 +38,17 @@ body::before {
     border: 1px solid rgba(255, 255, 255, 0.6); /* 縁取り（不要なら削除可） */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);  /* 軽い影（不要なら削除可） */
     
-    /* 【変更点】画面の中央に固定する */
-    position: absolute;       /* body の相対位置を指定するため必須 */
-    top: 30%;                 /* 画面の高さの n% に配置 */
-    transform: translateY(-50%); /* 要素自身の高さの半分を上にずらす（正確な中央にするため） */ 
+    /* 【変更点】画面の中央付近に固定する */
+    position: absolute;             /* body の相対位置を指定するため必須 */
+    top: 30%;                       /* 画面の高さの n% に配置 */
+    transform: translateY(-30%);    /* 要素自身の高さの n% 上にずらす */ 
 }
 
 /* タイトルのスタイル */
 .menu-container h1 {
-    font-size: 2.5rem;
+    font-size: 2.0rem;
     margin-top: 0;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     color: #333;
 }
 
