@@ -93,7 +93,7 @@ th {
     white-space: nowrap; /* 見出しも改行防止 */
 }
 
-/* 列幅の指定 */
+/* 列幅を相対単位で指定 */
 th:nth-child(1) {width: 3.5em;}  /* No列の幅 */
 th:nth-child(2) {width: 8.5em;}  /* 日付列の幅 */
 
