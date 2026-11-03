@@ -100,8 +100,9 @@ GitHub Pages（github.io）で公開しています。サーバー処理は不�
 ローカルで確認するときは、簡易サーバーを使用してください。
 
 ```bash
+# D:\My Documents2\Git_WORK\Yoshio342766.github.io にてターミナルを開き、
 python -m http.server 8000
-# ブラウザで http://localhost:8000/map/ を開く
+# ブラウザで http://localhost:8000/map を開く
 終了は [ctrl] + [c] 
 ```
 

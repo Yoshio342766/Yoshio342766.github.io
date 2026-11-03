@@ -76,3 +76,8 @@ body::before {
 .menu-button:hover {
     background-color: #0056b3;
 }
+
+/* フォントを指定するスタイル */
+body {
+    font-family: "Hiragino Maru Gothic Pro", "Hiragino Kaku Gothic ProN", sans-serif;
+}
