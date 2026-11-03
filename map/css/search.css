@@ -96,6 +96,7 @@ th {
 /* 列幅を相対単位で指定 */
 th:nth-child(1) {width: 3.0em;}  /* No列の幅 */
 th:nth-child(2) {width: 7.0em;}  /* 日付列の幅 */
+th:nth-child(4) {width: 10.0em;} /* 備考列の幅 */
 th:nth-child(5) {width: 7.5em;}  /* 地図ボタン列の幅 */
 
 /* 3列目（場所・施設名）と4列目（備考）を「…」で省略する */
