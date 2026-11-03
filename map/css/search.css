@@ -96,6 +96,7 @@ th {
 /* 列幅を相対単位で指定 */
 th:nth-child(1) {width: 3.5em;}  /* No列の幅 */
 th:nth-child(2) {width: 8.5em;}  /* 日付列の幅 */
+th:nth-child(5) {width: 7.5em;}  /* 地図ボタン列の幅 */
 
 /* 1列目(No)、2列目(日付)、5列目(地図ボタン)は中央寄せ */
 td:nth-child(1),
