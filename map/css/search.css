@@ -77,6 +77,8 @@ th, td {
 /* データ行は基本左寄せ */
 td {
     text-align: left;
+    word-wrap: break-word; /* 長文字が折り返すようにする（幅制限がある場合の対策） */
+    overflow-wrap: normal; /* 改行制御 */
 }
 
 /* 見出しは中央寄せ */
@@ -86,6 +88,7 @@ th {
     position: sticky;
     top: 0;
     text-align: center;
+    white-space: nowrap; /* 見出しも改行防止 */
 }
 
 /* 1列目(No)、2列目(日付)、5列目(地図ボタン)は中央寄せ */
