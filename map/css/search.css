@@ -98,6 +98,14 @@ th:nth-child(1) {width: 3.0em;}  /* No列の幅 */
 th:nth-child(2) {width: 7.0em;}  /* 日付列の幅 */
 th:nth-child(5) {width: 7.5em;}  /* 地図ボタン列の幅 */
 
+/* 3列目（場所・施設名）と4列目（備考）を「…」で省略する */
+td:nth-child(3),
+td:nth-child(4) {
+    white-space: nowrap;      /* 折り返さない */
+    overflow: hidden;         /* はみ出た部分を隠す */
+    text-overflow: ellipsis;  /* 隠れた部分を「…」で表示 */
+}
+
 /* 1列目(No)、2列目(日付)、5列目(地図ボタン)は中央寄せ */
 td:nth-child(1),
 td:nth-child(2),

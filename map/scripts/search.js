@@ -147,11 +147,14 @@ function renderTable() {
     data.forEach((item, index) => {
         const row = document.createElement('tr');
         
+        // ダブルクォートをエスケープする簡易関数（念のため）
+        const escapeAttr = (str) => String(str).replace(/"/g, '&quot;');
+
         row.innerHTML = `
             <td>${index + 1}</td>
             <td>${item.date}</td>
-            <td>${item.name}</td>
-            <td>${item.memo}</td>
+            <td title="${escapeAttr(item.name)}">${escapeAttr(item.name)}</td>
+            <td title="${escapeAttr(item.memo)}">${escapeAttr(item.memo)}</td>
         `;
         
         const mapTd = document.createElement('td');
