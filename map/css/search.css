@@ -1,5 +1,6 @@
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
     margin: 30px;
     color: #333;
     background-color: #f9f9f9;
@@ -71,7 +72,7 @@ table {
 
 th, td {
     border: 1px solid #e0e0e0;
-    padding: 12px;
+    padding: 4px;
 }
 
 /* データ行は基本左寄せ */
@@ -101,6 +102,7 @@ td:nth-child(5) {
 /* No、日付、時間、地図ボタンの列は途中で改行させない */
 td:nth-child(1),
 td:nth-child(2),
+td:nth-child(3),
 td:nth-child(4),
 td:nth-child(5) {
     white-space: nowrap;
@@ -126,10 +128,10 @@ tr:hover {
     display: inline-block;
     background: #4285F4;
     color: white;
-    padding: 6px 12px;
+    padding: 4px 12px;
     text-decoration: none;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .map-link:hover {
