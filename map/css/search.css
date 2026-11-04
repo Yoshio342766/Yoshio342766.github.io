@@ -1,5 +1,6 @@
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    /* 既存のフォント指定を Kosugi Maru に変更 */
+    font-family: "Kosugi Maru", 'Helvetica Neue', Arial, sans-serif; 
     font-size: 14px;
     margin: 30px;
     color: #333;
@@ -30,13 +31,13 @@ h1 {
 
 #searchBox {
     padding: 12px;
-    width: 100%;
-    max-width: 400px;
+    flex: 1; 
+    min-width: 200px;
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-    margin-bottom: 0; /* controls配下に入ったためマージンをリセット */
+    margin-bottom: 0;
 }
 
 .sort-options {
@@ -69,6 +70,8 @@ table {
     width: 100%;
     min-width: 600px;
     table-layout: fixed;
+    /* テーブル内だけ元のフォントに戻す */
+    font-family: 'Helvetica Neue', Arial, sans-serif; 
 }
 
 th, td {
