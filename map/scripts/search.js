@@ -162,7 +162,7 @@ function renderTable() {
             const button = document.createElement('button');
             button.type = 'button';
             button.className = 'map-link';
-            button.textContent = '🗺️ 地図を表示';
+            button.textContent = '🗺️ 表示';
             button.style.cursor = 'pointer';
             button.style.border = 'none';
             
