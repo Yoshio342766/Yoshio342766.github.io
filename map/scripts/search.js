@@ -3,13 +3,13 @@ let filteredData = [];      // 現在の検索・ソート結果（全件）
 let visibleCount = 0;       // 現在表示している件数
 
 // 表示件数の設定（search.json で上書き。読み込み失敗時はこの値を使用）
-let initialDisplayCount = 25;
-let loadMoreCount = 25;
+let initialDisplayCount = 20; // 初期表示件数
+let loadMoreCount = 20;       // 「もっと見る」ボタンで追加表示する件数 
 
 // 設定ファイル(search.json)の読み込み
 async function loadConfig() {
     try {
-        const response = await fetch('data/search.json');
+        const response = await fetch('.//json/search.json');
         if (!response.ok) throw new Error('設定ファイルの読み込みに失敗しました');
         const config = await response.json();
 
