@@ -51,23 +51,30 @@ h1 {
     border-radius: 4px;
     transition: background-color 0.2s;
     font-size: 12pt;
+    
+    /* 各ブラウザ標準のマーカーを非表示にする */
+    list-style: none;
+}
+
+.treeview summary::-webkit-details-marker {
+    display: none; /* Safari等のWebkit系ブラウザ用 */
 }
 
 .treeview summary:hover {
     background-color: #f0f4f8;
 }
 
-/* マーカー（矢印）の見た目を変更する例 */
-.treeview details > summary::marker {
-    content: "(+) ";
+/* 三角形の開閉マークを ::before で表示する */
+.treeview details > summary::before {
+    content: "▶ ";
+    font-size: 0.8em;
     color: #6b7280;
-    font-weight: bold;
 }
 
-.treeview details[open] > summary::marker {
-    content: "(-) ";
+.treeview details[open] > summary::before {
+    content: "▼ ";
+    font-size: 0.8em;
     color: #6b7280;
-    font-weight: bold;
 }
 
 /* フォルダではない末端（ファイル）のスタイル */
