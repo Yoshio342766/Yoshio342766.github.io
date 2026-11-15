@@ -26,11 +26,26 @@
     <div class="menu-container">
         <h1>ドライブの足跡</h1>
         <div class="button-group">
-            <!-- target="_blank" で別ウィンドウで開く -->
-            <a href="treeview.html" class="menu-button" target="_blank">マップ（ピン）</a>
-            <!-- target="_blank" で別ウィンドウで開く -->
-            <a href="search.html" class="menu-button" target="_blank">検索</a>
+            <!-- onclickでウィンドウ制御関数を呼び出す -->
+            <a href="treeview.html" class="menu-button" onclick="openWindow(event, 'treeview.html', 'mapWindow')">マップ（ピン）</a>
+            <a href="search.html" class="menu-button" onclick="openWindow(event, 'search.html', 'searchWindow')">検索</a>
         </div>
     </div>
+
+    <script>
+        // ウィンドウを管理して重複オープンを防ぐ関数
+        function openWindow(event, url, windowName) {
+            // <a>タグ本来のリンク動作（デフォルトの挙動）をキャンセル
+            event.preventDefault();
+
+            // window.openの第3引数でウィンドウのオプションを指定することも可能（必要に応じて）
+            let win = window.open(url, windowName);
+
+            // ウィンドウが正常に開けた（または既存のウィンドウにフォーカスできた）場合
+            if (win) {
+                win.focus(); // すでに開いている場合は手前に持ってくる
+            }
+        }
+    </script>
 </body>
 </html>
