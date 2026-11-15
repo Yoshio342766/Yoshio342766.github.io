@@ -1,6 +1,7 @@
 let allData = [];
 let filteredData = [];      // 現在の検索・ソート結果（全件）
 let visibleCount = 0;       // 現在表示している件数
+let mapWindow = null;
 
 // 表示件数の設定（search.json で上書き。読み込み失敗時はこの値を使用）
 let initialDisplayCount = 25; // 初期表示件数
@@ -166,11 +167,36 @@ function renderTable() {
             button.style.cursor = 'pointer';
             button.style.border = 'none';
             
+            // button.addEventListener('click', () => {
+            //     const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
+            //     window.open(mapUrl, '_blank', 'noopener,noreferrer');
+            // });
+
+            // button.addEventListener('click', () => {
+            //     const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
+                
+            //     // 開いているタブ（ウィンドウ）の名前が 'myDriveMapTab' かどうかで判定
+            //     // （ブラウザの仕様で mapWindow 変数が null になっても、ウィンドウの名前は保持されるため）
+            //     if (mapWindow && !mapWindow.closed) {
+            //         mapWindow.location.href = mapUrl;
+            //         mapWindow.focus();
+            //     } else {
+            //         mapWindow = window.open(mapUrl, 'myDriveMapTab');
+                    
+            //         // 変数に正しく入ったか確認（デバッグ用）
+            //         if (!mapWindow) {
+            //             console.warn("ポップアップブロックされている可能性があります");
+            //         }
+            //     }
+            // });
+
             button.addEventListener('click', () => {
-                const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
-                window.open(mapUrl, '_blank', 'noopener,noreferrer');
+                const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
+                mapWindow = window.open(mapUrl, 'myDriveMapTab');
+                if (mapWindow) mapWindow.focus();
+                else console.warn('ポップアップがブロックされている可能性があります');
             });
-            
+
             mapTd.appendChild(button);
         } else {
             mapTd.textContent = '-';
