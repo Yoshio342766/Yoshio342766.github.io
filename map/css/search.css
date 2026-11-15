@@ -16,9 +16,21 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
+.header-title {
+    display: flex;
+    align-items: center; /* 画像と文字の上下位置を中央に合わせる */
+    gap: 12px;           /* 画像とタイトルの間の余白 */
+    margin-bottom: 20px;
+}
+
+.header-title img {
+    width: 30px;         /* パンダ画像の幅を指定 */
+    height: auto;
+}
+
 h1 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin: 0;           /* h1のデフォルトの上下マージンをリセット */
 }
 
 .controls {
