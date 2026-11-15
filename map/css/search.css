@@ -25,6 +25,9 @@ body {
 
 .header-title img {
     width: 30px;         /* パンダ画像の幅を指定 */
+    border: 2px solid #acc0ad;
+    border-radius: 5px;
+    box-shadow: 3px 3px 0 #789486;
     height: auto;
 }
 
