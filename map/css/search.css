@@ -1,3 +1,5 @@
+/* search.css - 検索結果ページのスタイルシート */
+
 body {
     /* 既存のフォント指定を Kosugi Maru に変更 */
     font-family: "Kosugi Maru", 'Helvetica Neue', Arial, sans-serif; 
@@ -7,6 +9,7 @@ body {
     background-color: #f9f9f9;
 }
 
+/* コンテナのスタイル */
 .container {
     max-width: 1000px;
     margin: 0 auto;
@@ -16,6 +19,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
+/* ヘッダーのスタイル */
 .header-title {
     display: flex;
     align-items: center; /* 画像と文字の上下位置を中央に合わせる */
@@ -23,6 +27,7 @@ body {
     margin-bottom: 20px;
 }
 
+/* パンダ画像のスタイル */
 .header-title img {
     width: 30px;         /* パンダ画像の幅を指定 */
     height: 30px;        /* パンダ画像の高さを指定 */
@@ -31,11 +36,13 @@ body {
     box-shadow: 2px 2px 0 #0b4425;
 }
 
+/* h1のスタイル */
 h1 {
     font-size: 24px;
     margin: 0;           /* h1のデフォルトの上下マージンをリセット */
 }
 
+/* 検索ボックスとソートオプションのコンテナ */
 .controls {
     display: flex;
     align-items: center;
@@ -44,6 +51,7 @@ h1 {
     margin-bottom: 20px;
 }
 
+/* 検索ボックスのスタイル */
 #searchBox {
     padding: 12px;
     flex: 1; 
@@ -55,6 +63,7 @@ h1 {
     margin-bottom: 0;
 }
 
+/* ソートオプションのスタイル */
 .sort-options {
     display: flex;
     align-items: center;
@@ -62,6 +71,7 @@ h1 {
     font-size: 16px;
 }
 
+/* ソートオプションのラベルのスタイル */
 .sort-options label {
     cursor: pointer;
     display: flex;
@@ -69,26 +79,30 @@ h1 {
     gap: 4px;
 }
 
+/* メタ情報のスタイル */
 .meta-info {
     margin: 15px 0;
     font-size: 14px;
     color: #666;
 }
 
+/* テーブルのラッパー */
 .table-wrapper {
     overflow-x: auto;
     margin-top: 10px;
 }
 
+/* テーブルのスタイル */
 table {
     border-collapse: collapse;
     width: 100%;
-    min-width: 600px;
+    min-width: 500px;
     table-layout: fixed;
     /* テーブル内だけ元のフォントに戻す */
     font-family: 'Helvetica Neue', Arial, sans-serif; 
 }
 
+/* テーブルのヘッダーとデータセルのスタイル */
 th, td {
     border: 1px solid #e0e0e0;
     padding: 4px;
@@ -148,22 +162,26 @@ tr:hover {
     background-color: #f1f5f9;
 }
 
+/* 検索結果がない場合のメッセージ */
 .no-result {
     text-align: center;
     color: #999;
     padding: 30px;
 }
 
+/* マップリンクのスタイル */
 a.map-link { 
     color: #0407a8; text-decoration: underline; 
 }
 
+/* マップリンクのホバー時のスタイル */
 .map-link {
     color: #1a5fd0;
     text-decoration: underline;
     cursor: pointer;
 }
 
+/* マップリンクのホバー時のスタイル */
 .map-link:hover {
     color: #0b3d91;
     text-decoration: none;
@@ -175,6 +193,7 @@ a.map-link {
     margin-top: 20px;
 }
 
+/* もっと見るボタンのスタイル */
 .load-more {
     padding: 10px 32px;
     font-size: 15px;
@@ -185,10 +204,12 @@ a.map-link {
     cursor: pointer;
 }
 
+/* もっと見るボタンのホバー時のスタイル */
 .load-more:hover {
     background: #eef4ff;
 }
 
+/* もっと見るボタンが非表示のときのスタイル */
 .load-more[hidden] {
     display: none;
 }
