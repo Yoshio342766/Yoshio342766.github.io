@@ -20,7 +20,17 @@
         .section {
             margin: 20px 0;
         }
+        /* README表示エリアのスタイル（お好みで調整してください） */
+        #readme-container {
+            background-color: #f6f8fa;
+            border: 1px solid #d0d7de;
+            border-radius: 6px;
+            padding: 16px;
+            margin-top: 20px;
+        }
     </style>
+    <!-- 1. MarkdownをHTMLに変換するためのライブラリ（marked.js）を読み込む -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
     <h1>Welcome to My Website</h1>
@@ -34,5 +44,30 @@
         <h2>Contact</h2>
         <p>連絡先はありません。</p>
     </div>
+
+    <!-- READMEを表示させるセクション -->
+    <div class="section">
+        <h3>README</h3>
+        <div id="readme-container">読み込み中...</div>
+    </div>
+
+    <!-- 2. fetch APIを使ってREADME.mdを読み込み、変換して表示するスクリプト -->
+    <script>
+        fetch('README.md')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('README.mdの読み込みに失敗しました。');
+                }
+                return response.text();
+            })
+            .then(markdown => {
+                // marked.jsを使ってMarkdownをHTMLに変換し、divの中に流し込む
+                document.getElementById('readme-container').innerHTML = marked.parse(markdown);
+            })
+            .catch(error => {
+                document.getElementById('readme-container').innerHTML = '読み込みエラーが発生しました。';
+                console.error(error);
+            });
+    </script>
 </body>
 </html>
