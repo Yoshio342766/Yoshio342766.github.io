@@ -25,10 +25,10 @@ body {
 
 .header-title img {
     width: 30px;         /* パンダ画像の幅を指定 */
-    border: 2px solid #0004ff;
+    height: 30px;        /* パンダ画像の高さを指定 */
+    border: 2px solid #4285F4;
     border-radius: 5px;
-    box-shadow: 2px 2px 0 #797979;
-    height: auto;
+    box-shadow: 2px 2px 0 #0b4425;
 }
 
 h1 {
