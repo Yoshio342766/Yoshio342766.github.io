@@ -121,7 +121,7 @@ function renderTable() {
             ? `全 ${total} 件中、該当 0 件です。`
             : `全 ${total} 件中、0 件です。`;
         loadMoreBtn.hidden = true;
-        tbody.innerHTML = `<tr><td colspan="5" class="no-result">該当するデータが見つかりません。</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="4" class="no-result">該当するデータが見つかりません。</td></tr>`;
         return;
     }
 
@@ -147,62 +147,45 @@ function renderTable() {
     // 行の生成（indexを使って1からの連番を作成）
     data.forEach((item, index) => {
         const row = document.createElement('tr');
-        
-        // ダブルクォートをエスケープする簡易関数（念のため）
-        const escapeAttr = (str) => String(str).replace(/"/g, '&quot;');
 
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${item.date}</td>
-            <td title="${escapeAttr(item.name)}">${escapeAttr(item.name)}</td>
-            <td title="${escapeAttr(item.memo)}">${escapeAttr(item.memo)}</td>
-        `;
-        
-        const mapTd = document.createElement('td');
+        // No
+        const noTd = document.createElement('td');
+        noTd.textContent = index + 1;
+        row.appendChild(noTd);
+
+        // 日付
+        const dateTd = document.createElement('td');
+        dateTd.textContent = item.date;
+        row.appendChild(dateTd);
+
+        // 場所・施設名（緯度・経度があればクリックで地図を表示するリンクにする）
+        const nameTd = document.createElement('td');
+        nameTd.title = item.name;
         if (item.lat && item.lng) {
-            const button = document.createElement('button');
-            button.type = 'button';
-            button.className = 'map-link';
-            button.textContent = '🗺️ 表示';
-            button.style.cursor = 'pointer';
-            button.style.border = 'none';
-            
-            // button.addEventListener('click', () => {
-            //     const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
-            //     window.open(mapUrl, '_blank', 'noopener,noreferrer');
-            // });
-
-            // button.addEventListener('click', () => {
-            //     const mapUrl = 'https://google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
-                
-            //     // 開いているタブ（ウィンドウ）の名前が 'myDriveMapTab' かどうかで判定
-            //     // （ブラウザの仕様で mapWindow 変数が null になっても、ウィンドウの名前は保持されるため）
-            //     if (mapWindow && !mapWindow.closed) {
-            //         mapWindow.location.href = mapUrl;
-            //         mapWindow.focus();
-            //     } else {
-            //         mapWindow = window.open(mapUrl, 'myDriveMapTab');
-                    
-            //         // 変数に正しく入ったか確認（デバッグ用）
-            //         if (!mapWindow) {
-            //             console.warn("ポップアップブロックされている可能性があります");
-            //         }
-            //     }
-            // });
-
-            button.addEventListener('click', () => {
-                const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + item.lat + ',' + item.lng;
+            const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.lat + ',' + item.lng);
+            const link = document.createElement('a');
+            link.href = mapUrl;
+            link.className = 'map-link';
+            link.textContent = item.name;
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // 同じ名前のタブを再利用して地図を表示
                 mapWindow = window.open(mapUrl, 'myDriveMapTab');
                 if (mapWindow) mapWindow.focus();
                 else console.warn('ポップアップがブロックされている可能性があります');
             });
-
-            mapTd.appendChild(button);
+            nameTd.appendChild(link);
         } else {
-            mapTd.textContent = '-';
+            nameTd.textContent = item.name;
         }
-        row.appendChild(mapTd);
-        
+        row.appendChild(nameTd);
+
+        // 備考
+        const memoTd = document.createElement('td');
+        memoTd.title = item.memo;
+        memoTd.textContent = item.memo;
+        row.appendChild(memoTd);
+
         tbody.appendChild(row);
     });
 }

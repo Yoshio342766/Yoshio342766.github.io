@@ -115,7 +115,6 @@ th {
 th:nth-child(1) {width: 3.0em;}  /* No列の幅 */
 th:nth-child(2) {width: 7.0em;}  /* 日付列の幅 */
 th:nth-child(4) {width: 10.0em;} /* 備考列の幅 */
-th:nth-child(5) {width: 7.5em;}  /* 地図ボタン列の幅 */
 
 /* 3列目（場所・施設名）と4列目（備考）を「…」で省略する */
 td:nth-child(3),
@@ -125,19 +124,17 @@ td:nth-child(4) {
     text-overflow: ellipsis;  /* 隠れた部分を「…」で表示 */
 }
 
-/* 1列目(No)、2列目(日付)、5列目(地図ボタン)は中央寄せ */
+/* 1列目(No)、2列目(日付)は中央寄せ */
 td:nth-child(1),
-td:nth-child(2),
-td:nth-child(5) {
+td:nth-child(2) {
     text-align: center;
 }
 
-/* No、日付、時間、地図ボタンの列は途中で改行させない */
+/* 各列は途中で改行させない */
 td:nth-child(1),
 td:nth-child(2),
 td:nth-child(3),
-td:nth-child(4),
-td:nth-child(5) {
+td:nth-child(4) {
     white-space: nowrap;
 }
 
@@ -157,18 +154,19 @@ tr:hover {
     padding: 30px;
 }
 
+a.map-link { 
+    color: #0407a8; text-decoration: underline; 
+}
+
 .map-link {
-    display: inline-block;
-    background: #4285F4;
-    color: white;
-    padding: 4px 12px;
-    text-decoration: none;
-    border-radius: 4px;
-    font-size: 12px;
+    color: #1a5fd0;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .map-link:hover {
-    background: #357ae8;
+    color: #0b3d91;
+    text-decoration: none;
 }
 
 /* もっと見るボタン */
@@ -194,3 +192,4 @@ tr:hover {
 .load-more[hidden] {
     display: none;
 }
+
