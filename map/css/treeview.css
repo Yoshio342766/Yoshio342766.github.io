@@ -87,6 +87,12 @@ h1 {
 .treeview .file a {
     color: #132f6d;
     text-decoration: none;
+
+    display: block;             /* inline-blockでも可 */
+    max-width: 100%;            /* 親要素の幅に収める */
+    white-space: nowrap;        /* 折り返しを禁止 */
+    overflow: hidden;           /* はみ出し部分を非表示 */
+    text-overflow: ellipsis;    /* 省略記号「...」を表示 */
 }
 
 .treeview .file a:hover {
