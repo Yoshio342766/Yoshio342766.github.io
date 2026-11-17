@@ -1,7 +1,7 @@
-This page is for learning about the  
--  HTML
--  CSS
--  JavaScript
--  GitHub Pages（github.io） 
-
-and other elements that make up a web page.
+This page presents what I have learned regarding
+the elements that make up web pages,
+including:
+- HTML
+- CSS
+- JavaScript
+- GitHub Pages (github.io)
