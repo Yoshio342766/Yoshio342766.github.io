@@ -1,5 +1,4 @@
-This page presents what I have learned regarding  
-the elements that make up web pages,
+This page presents what I have learned regarding the elements that make up web pages,  
 including:
 - HTML
 - CSS
