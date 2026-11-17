@@ -1,5 +1,5 @@
-This page presents what I have learned regarding the elements that make up web pages,  
-including:
+This page presents what I have learned regarding the elements that make up web pages,<br>
+including:<br>
 - HTML
 - CSS
 - JavaScript
