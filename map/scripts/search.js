@@ -121,7 +121,7 @@ function renderTable() {
             ? `全 ${total} 件中、該当 0 件です。`
             : `全 ${total} 件中、0 件です。`;
         loadMoreBtn.hidden = true;
-        tbody.innerHTML = `<tr><td colspan="4" class="no-result">該当するデータが見つかりません。</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="6" class="no-result">該当するデータが見つかりません。</td></tr>`;
         return;
     }
 
@@ -160,6 +160,7 @@ function renderTable() {
 
         // 場所・施設名（緯度・経度があればクリックで地図を表示するリンクにする）
         const nameTd = document.createElement('td');
+        nameTd.colSpan = 3; // 列幅配分のため3列分を使用（search.html の colgroup 参照）
         nameTd.title = item.name;
         if (item.lat && item.lng) {
             const mapUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(item.lat + ',' + item.lng);

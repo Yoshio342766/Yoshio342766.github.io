@@ -45,11 +45,18 @@
     <!-- 結果表示テーブル -->
     <div class="table-wrapper">
         <table>
+            <!-- 列幅: 1,2列目は固定幅、残りの5列(幅指定なし)は均等配分。
+                 3列目は3列分(colspan=3)、4列目は1列分を使うため 75% : 25% になる -->
+            <colgroup>
+                <col style="width: 3.0em;">
+                <col style="width: 7.0em;">
+                <col span="4">
+            </colgroup>
             <thead>
                 <tr>
                     <th>No</th>
                     <th>日　付</th>
-                    <th>場所・施設名（Map link）</th>
+                    <th colspan="3">場所・施設名（Map link）</th>
                     <th>備　考</th>
                 </tr>
             </thead>

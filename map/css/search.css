@@ -125,10 +125,10 @@ th {
     white-space: nowrap; /* 見出しも改行防止 */
 }
 
-/* 列幅を相対単位で指定 */
-th:nth-child(1) {width: 3.0em;}  /* No列の幅 */
-th:nth-child(2) {width: 7.0em;}  /* 日付列の幅 */
-th:nth-child(4) {width: 10.0em;} /* 備考列の幅 */
+/* 列幅の指定は search.html の <colgroup> で行う
+   1, 2列目: 相対単位(em)の固定幅
+   3, 4列目: 残り幅を 75% : 25% で配分
+   （3列目は colspan=3、4列目は colspan なしで、幅指定のない4列を均等配分させている） */
 
 /* 3列目（場所・施設名）と4列目（備考）を「…」で省略する */
 td:nth-child(3),
@@ -170,19 +170,14 @@ tr:hover {
 }
 
 /* マップリンクのスタイル */
-a.map-link { 
-    color: #0407a8; text-decoration: underline; 
-}
-
-/* マップリンクのホバー時のスタイル */
-.map-link {
-    color: #1a5fd0;
+a.map-link {
+    color: #0407a8;
     text-decoration: underline;
     cursor: pointer;
 }
 
 /* マップリンクのホバー時のスタイル */
-.map-link:hover {
+a.map-link:hover {
     color: #0b3d91;
     text-decoration: none;
 }
